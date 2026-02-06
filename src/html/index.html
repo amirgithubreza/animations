@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کتابخانه کامل CSS Animations - نسخه پیشرفته (65+ انیمیشن)</title>
+    <title>کتابخانه کامل CSS Animations - نسخه پیشرفته</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -18,8 +18,6 @@
             --teal: #20c997;
             --pink: #ff4d8d;
             --orange: #ff9f1c;
-            --cyan: #00b4d8;
-            --lime: #a7c957;
         }
         
         * {
@@ -38,7 +36,7 @@
         }
         
         .container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -260,10 +258,6 @@
             background: linear-gradient(135deg, #7209b7, #560bad);
         }
         
-        .demo-element-new {
-            background: linear-gradient(135deg, var(--cyan), #0096c7);
-        }
-        
         .controls {
             display: flex;
             gap: 15px;
@@ -431,7 +425,233 @@
         
         /* =============== انیمیشن‌های ترکیبی =============== */
         
-        /* انیمیشن‌های اصلی (31 تای قبلی) */
+        /* 1. Bounce */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-40px); }
+        }
+        
+        /* 2. Pulse */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+        
+        /* 3. Spin */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 4. Flip */
+        @keyframes flip {
+            0% { transform: perspective(400px) rotateY(0); }
+            40% { transform: perspective(400px) translateZ(150px) rotateY(170deg); }
+            50% { transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1); }
+            80% { transform: perspective(400px) rotateY(360deg) scale(0.95); }
+            100% { transform: perspective(400px) scale(1); }
+        }
+        
+        /* 5. Shake */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-12px); }
+            20%, 40%, 60%, 80% { transform: translateX(12px); }
+        }
+        
+        /* 6. Heartbeat */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+        
+        /* 7. Fade In */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 8. Zoom In */
+        @keyframes zoomIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* 9. Bounce In */
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* 10. Fade Out */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateY(30px); }
+        }
+        
+        /* 11. Zoom Out */
+        @keyframes zoomOut {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+        
+        /* 12. Bounce Out */
+        @keyframes bounceOut {
+            0% { transform: scale(1); opacity: 1; }
+            20% { transform: scale(0.9); opacity: 1; }
+            50%, 55% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.3); opacity: 0; }
+        }
+        
+        /* 13. Float */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+        
+        /* 14. Color Change */
+        @keyframes colorChange {
+            0% { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+            33% { background: linear-gradient(135deg, var(--accent), var(--purple)); }
+            66% { background: linear-gradient(135deg, var(--success), #06d6a0); }
+            100% { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+        }
+        
+        /* 15. Swing */
+        @keyframes swing {
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        /* 16. Tada */
+        @keyframes tada {
+            0%, 100% { transform: scale(1); }
+            10%, 20% { transform: scale(0.9) rotate(-5deg); }
+            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(5deg); }
+            40%, 60%, 80% { transform: scale(1.1) rotate(-5deg); }
+        }
+        
+        /* 17. Wobble */
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0); }
+            15% { transform: translateX(-30px) rotate(-10deg); }
+            30% { transform: translateX(20px) rotate(8deg); }
+            45% { transform: translateX(-15px) rotate(-6deg); }
+            60% { transform: translateX(10px) rotate(4deg); }
+            75% { transform: translateX(-5px) rotate(-2deg); }
+        }
+        
+        /* 18. Jello */
+        @keyframes jello {
+            0%, 100% { transform: scale3d(1, 1, 1); }
+            15% { transform: scale3d(1.25, 0.75, 1); }
+            30% { transform: scale3d(0.75, 1.25, 1); }
+            45% { transform: scale3d(1.15, 0.85, 1); }
+            60% { transform: scale3d(0.95, 1.05, 1); }
+            75% { transform: scale3d(1.05, 0.95, 1); }
+        }
+        
+        /* 19. Rubber Band */
+        @keyframes rubberBand {
+            0% { transform: scale(1); }
+            30% { transform: scaleX(1.25) scaleY(0.75); }
+            40% { transform: scaleX(0.75) scaleY(1.25); }
+            60% { transform: scaleX(1.15) scaleY(0.85); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 20. Flip In X */
+        @keyframes flipInX {
+            0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+            40% { transform: perspective(400px) rotateX(-20deg); }
+            60% { transform: perspective(400px) rotateX(10deg); opacity: 1; }
+            80% { transform: perspective(400px) rotateX(-5deg); }
+            100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+        }
+        
+        /* 21. Flip In Y */
+        @keyframes flipInY {
+            0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+            40% { transform: perspective(400px) rotateY(-20deg); }
+            60% { transform: perspective(400px) rotateY(10deg); opacity: 1; }
+            80% { transform: perspective(400px) rotateY(-5deg); }
+            100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+        }
+        
+        /* 22. Light Speed In */
+        @keyframes lightSpeedIn {
+            0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
+            60% { transform: translateX(-20%) skewX(30deg); opacity: 1; }
+            80% { transform: translateX(0%) skewX(-15deg); opacity: 1; }
+            100% { transform: translateX(0%) skewX(0deg); opacity: 1; }
+        }
+        
+        /* 23. Light Speed Out */
+        @keyframes lightSpeedOut {
+            0% { transform: translateX(0%) skewX(0deg); opacity: 1; }
+            100% { transform: translateX(100%) skewX(30deg); opacity: 0; }
+        }
+        
+        /* 24. Roll In */
+        @keyframes rollIn {
+            0% { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
+            100% { opacity: 1; transform: translateX(0px) rotate(0deg); }
+        }
+        
+        /* 25. Roll Out */
+        @keyframes rollOut {
+            0% { opacity: 1; transform: translateX(0px) rotate(0deg); }
+            100% { opacity: 0; transform: translateX(100%) rotate(120deg); }
+        }
+        
+        /* 26. Wave */
+        @keyframes wave {
+            0%, 100% { transform: translateX(0) translateZ(0) scaleY(1); }
+            50% { transform: translateX(-25%) translateZ(0) scaleY(0.55); }
+        }
+        
+        /* 27. Orbit */
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+        }
+        
+        /* 28. Blink */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+        
+        /* 29. Glow */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px var(--primary); }
+            50% { box-shadow: 0 0 30px var(--accent); }
+        }
+        
+        /* 30. Breathing */
+        @keyframes breathing {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        /* 31. Ripple */
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+        
+        /* کلاس‌های انیمیشن */
         .bounce-demo { animation: bounce 1.5s infinite; }
         .pulse-demo { animation: pulse 2s infinite; }
         .spin-demo { animation: spin 3s linear infinite; }
@@ -462,7 +682,12 @@
         .blink-demo { animation: blink 1.5s infinite; }
         .glow-demo { animation: glow 2s infinite; }
         .breathing-demo { animation: breathing 3s ease-in-out infinite; }
-        .ripple-demo { position: relative; }
+        
+        /* Ripple effect */
+        .ripple-demo {
+            position: relative;
+        }
+        
         .ripple-demo:after {
             content: '';
             position: absolute;
@@ -476,757 +701,16 @@
             animation: ripple 1.5s infinite;
         }
         
-        /* =============== 30 انیمیشن جدید =============== */
-        
-        /* 32. Fold */
-        @keyframes fold {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(0.1); }
-        }
-        
-        .fold-demo { animation: fold 1.5s infinite; }
-        
-        /* 33. Flare */
-        @keyframes flare {
-            0%, 100% { 
-                transform: scale(1); 
-                filter: brightness(1);
-            }
-            50% { 
-                transform: scale(1.2); 
-                filter: brightness(1.5) drop-shadow(0 0 10px #ff9e00);
-            }
-        }
-        
-        .flare-demo { animation: flare 2s infinite; }
-        
-        /* 34. Pendulum */
-        @keyframes pendulum {
-            0%, 100% { transform: rotate(-30deg); }
-            50% { transform: rotate(30deg); }
-        }
-        
-        .pendulum-demo { 
-            animation: pendulum 2s infinite ease-in-out;
-            transform-origin: top center;
-        }
-        
-        /* 35. Bounce Up */
-        @keyframes bounceUp {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-25px); }
-        }
-        
-        .bounceUp-demo { animation: bounceUp 1.2s infinite; }
-        
-        /* 36. Bounce Right */
-        @keyframes bounceRight {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(25px); }
-        }
-        
-        .bounceRight-demo { animation: bounceRight 1.2s infinite; }
-        
-        /* 37. Rotate Scale */
-        @keyframes rotateScale {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        
-        .rotateScale-demo { animation: rotateScale 3s infinite linear; }
-        
-        /* 38. Slide Up */
-        @keyframes slideUp {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .slideUp-demo { animation: slideUp 2s infinite; }
-        
-        /* 39. Slide Down */
-        @keyframes slideDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(20px); }
-        }
-        
-        .slideDownNew-demo { animation: slideDown 2s infinite; }
-        
-        /* 40. Slide Right */
-        @keyframes slideRight {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
-        }
-        
-        .slideRight-demo { animation: slideRight 2s infinite; }
-        
-        /* 41. Slide Left */
-        @keyframes slideLeft {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(-20px); }
-        }
-        
-        .slideLeft-demo { animation: slideLeft 2s infinite; }
-        
-        /* 42. Squash */
-        @keyframes squash {
-            0%, 100% { transform: scaleY(1) scaleX(1); }
-            50% { transform: scaleY(0.8) scaleX(1.2); }
-        }
-        
-        .squash-demo { animation: squash 1.5s infinite; }
-        
-        /* 43. Stretch */
-        @keyframes stretch {
-            0%, 100% { transform: scaleY(1) scaleX(1); }
-            50% { transform: scaleY(1.2) scaleX(0.8); }
-        }
-        
-        .stretch-demo { animation: stretch 1.5s infinite; }
-        
-        /* 44. Twirl */
-        @keyframes twirl {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        
-        .twirl-demo { animation: twirl 2s infinite linear; }
-        
-        /* 45. Dance */
-        @keyframes dance {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(-10deg); }
-            75% { transform: translateY(-10px) rotate(10deg); }
-        }
-        
-        .dance-demo { animation: dance 2s infinite ease-in-out; }
-        
-        /* 46. Fireworks */
-        @keyframes fireworks {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 1;
-                box-shadow: 0 0 0 rgba(255, 100, 100, 0);
-            }
-            50% { 
-                transform: scale(1.3); 
-                opacity: 0.8;
-                box-shadow: 0 0 20px rgba(255, 100, 100, 0.8);
-            }
-        }
-        
-        .fireworks-demo { animation: fireworks 1.5s infinite; }
-        
-        /* 47. Morph */
-        @keyframes morph {
-            0%, 100% { border-radius: 15px; }
-            25% { border-radius: 50% 15px 15px 15px; }
-            50% { border-radius: 15px 50% 15px 15px; }
-            75% { border-radius: 15px 15px 50% 15px; }
-        }
-        
-        .morph-demo { animation: morph 4s infinite; }
-        
-        /* 48. Neon */
-        @keyframes neon {
-            0%, 100% { 
-                box-shadow: 0 0 5px var(--cyan),
-                           0 0 10px var(--cyan),
-                           0 0 15px var(--cyan);
-                filter: brightness(1);
-            }
-            50% { 
-                box-shadow: 0 0 10px var(--cyan),
-                           0 0 20px var(--cyan),
-                           0 0 30px var(--cyan),
-                           0 0 40px var(--cyan);
-                filter: brightness(1.5);
-            }
-        }
-        
-        .neon-demo { animation: neon 1.5s infinite alternate; }
-        
-        /* 49. Rain */
-        @keyframes rain {
-            0% { transform: translateY(-100px) scale(0.5); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(100px) scale(1); opacity: 0; }
-        }
-        
-        .rain-demo {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .rain-demo:before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            width: 5px;
-            height: 30px;
-            background: var(--cyan);
-            border-radius: 10px;
-            animation: rain 1.5s infinite linear;
-        }
-        
-        /* 50. Snow */
-        @keyframes snow {
-            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(50px) rotate(360deg); opacity: 0; }
-        }
-        
-        .snow-demo {
-            position: relative;
-        }
-        
-        .snow-demo:before,
-        .snow-demo:after {
-            content: '❄';
-            position: absolute;
-            font-size: 1.5rem;
-            color: white;
-            animation: snow 2s infinite linear;
-        }
-        
-        .snow-demo:before {
-            left: 30%;
-            animation-delay: 0.5s;
-        }
-        
-        .snow-demo:after {
-            right: 30%;
-            animation-delay: 1s;
-        }
-        
-        /* 51. Confetti */
-        @keyframes confetti {
-            0% { transform: translateY(-50px) rotate(0deg) scale(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(50px) rotate(360deg) scale(1); opacity: 0; }
-        }
-        
-        .confetti-demo {
-            position: relative;
-        }
-        
-        .confetti-demo:before,
-        .confetti-demo:after {
-            content: '🎉';
-            position: absolute;
-            font-size: 1.2rem;
-            animation: confetti 2s infinite;
-        }
-        
-        .confetti-demo:before {
-            left: 25%;
-            animation-delay: 0.2s;
-        }
-        
-        .confetti-demo:after {
-            right: 25%;
-            animation-delay: 0.8s;
-        }
-        
-        /* 52. Star */
-        @keyframes star {
-            0%, 100% { 
-                transform: scale(1) rotate(0deg);
-                filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 100, 0));
-            }
-            50% { 
-                transform: scale(1.3) rotate(180deg);
-                filter: brightness(1.5) drop-shadow(0 0 15px rgba(255, 255, 100, 0.8));
-            }
-        }
-        
-        .star-demo { animation: star 2s infinite; }
-        
-        /* 53. Portal */
-        @keyframes portal {
-            0% { 
-                transform: rotate(0deg) scale(1);
-                box-shadow: 0 0 0 rgba(157, 78, 221, 0);
-            }
-            50% { 
-                transform: rotate(180deg) scale(1.2);
-                box-shadow: 0 0 40px rgba(157, 78, 221, 0.8);
-            }
-            100% { 
-                transform: rotate(360deg) scale(1);
-                box-shadow: 0 0 0 rgba(157, 78, 221, 0);
-            }
-        }
-        
-        .portal-demo { animation: portal 3s infinite linear; }
-        
-        /* 54. Magnet */
-        @keyframes magnet {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-15px); }
-            75% { transform: translateX(15px); }
-        }
-        
-        .magnet-demo { animation: magnet 1.5s infinite; }
-        
-        /* 55. Burst */
-        @keyframes burst {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        
-        .burst-demo {
-            animation: burst 1.5s infinite alternate;
-        }
-        
-        /* 56. Radar */
-        @keyframes radar {
-            0% { 
-                transform: rotate(0deg);
-                box-shadow: 0 0 0 rgba(67, 97, 238, 0);
-            }
-            100% { 
-                transform: rotate(360deg);
-                box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
-            }
-        }
-        
-        .radar-demo { animation: radar 2s infinite linear; }
-        
-        /* 57. Spiral */
-        @keyframes spiral {
-            0% { 
-                transform: rotate(0deg) scale(1);
-                border-radius: 15px;
-            }
-            50% { 
-                transform: rotate(180deg) scale(0.7);
-                border-radius: 50%;
-            }
-            100% { 
-                transform: rotate(360deg) scale(1);
-                border-radius: 15px;
-            }
-        }
-        
-        .spiral-demo { animation: spiral 3s infinite linear; }
-        
-        /* 58. Bounce Rotate */
-        @keyframes bounceRotate {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-        }
-        
-        .bounceRotate-demo { animation: bounceRotate 2s infinite; }
-        
-        /* 59. Slide Bounce */
-        @keyframes slideBounce {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-20px); }
-            75% { transform: translateX(20px); }
-        }
-        
-        .slideBounce-demo { animation: slideBounce 1.5s infinite; }
-        
-        /* 60. Pulse Rotate */
-        @keyframes pulseRotate {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(180deg); }
-        }
-        
-        .pulseRotate-demo { animation: pulseRotate 2s infinite; }
-        
-        /* 61. Float Spin */
-        @keyframes floatSpin {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        .floatSpin-demo { animation: floatSpin 3s infinite ease-in-out; }
-        
-        /* 62. Gravity */
-        @keyframes gravity {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(25px) scale(0.9); }
-        }
-        
-        .gravity-demo { animation: gravity 2s infinite; }
-        
-        /* 63. Elastic */
-        @keyframes elastic {
-            0%, 100% { transform: scale(1); }
-            30% { transform: scale(1.25); }
-            40% { transform: scale(0.9); }
-            50% { transform: scale(1.1); }
-            60% { transform: scale(0.95); }
-            70% { transform: scale(1.05); }
-        }
-        
-        .elastic-demo { animation: elastic 1.5s infinite; }
-        
-        /* 64. Focus */
-        @keyframes focus {
-            0%, 100% { 
-                transform: scale(1);
-                filter: blur(0px);
-            }
-            50% { 
-                transform: scale(1.1);
-                filter: blur(2px);
-            }
-        }
-        
-        .focus-demo { animation: focus 2s infinite; }
-        
-        /* 65. Sparkle */
-        @keyframes sparkle {
-            0%, 100% { 
-                opacity: 1;
-                filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-            }
-            50% { 
-                opacity: 0.7;
-                filter: brightness(1.5) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            }
-        }
-        
-        .sparkle-demo { animation: sparkle 1.2s infinite; }
-        
-        /* 66. Vortex */
-        @keyframes vortex {
-            0% { 
-                transform: rotate(0deg) scale(1);
-                border-radius: 15px;
-            }
-            50% { 
-                transform: rotate(180deg) scale(0.5);
-                border-radius: 50%;
-            }
-            100% { 
-                transform: rotate(360deg) scale(1);
-                border-radius: 15px;
-            }
-        }
-        
-        .vortex-demo { animation: vortex 2.5s infinite linear; }
-        
-        /* 67. Drift */
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(10px, -10px) rotate(5deg); }
-            50% { transform: translate(0, -20px) rotate(0deg); }
-            75% { transform: translate(-10px, -10px) rotate(-5deg); }
-        }
-        
-        .drift-demo { animation: drift 4s infinite ease-in-out; }
-        
-        /* 68. Hammer */
-        @keyframes hammer {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-30deg); }
-            75% { transform: rotate(30deg); }
-        }
-        
-        .hammer-demo { 
-            animation: hammer 1s infinite;
-            transform-origin: bottom center;
-        }
-        
-        /* 69. Leaf */
-        @keyframes leaf {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-15px) rotate(-10deg); }
-            50% { transform: translateY(-25px) rotate(0deg); }
-            75% { transform: translateY(-15px) rotate(10deg); }
-        }
-        
-        .leaf-demo { animation: leaf 3s infinite ease-in-out; }
-        
-        /* 70. Bubble */
-        @keyframes bubble {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        .bubble-demo { 
-            animation: bubble 2s infinite;
-            border-radius: 50%;
-        }
-        
-        /* 71. Charge */
-        @keyframes charge {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 0 rgba(76, 201, 240, 0);
-            }
-            50% { 
-                transform: scale(1.1);
-                box-shadow: 0 0 20px rgba(76, 201, 240, 0.8);
-            }
-        }
-        
-        .charge-demo { animation: charge 1.5s infinite; }
-        
-        /* 72. Hover */
-        @keyframes hover {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .hover-demo { animation: hover 2s infinite ease-in-out; }
-        
-        /* 73. Twist */
-        @keyframes twist {
-            0%, 100% { transform: rotateY(0deg); }
-            50% { transform: rotateY(180deg); }
-        }
-        
-        .twist-demo { animation: twist 3s infinite; }
-        
-        /* 74. Quake */
-        @keyframes quake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-        
-        .quake-demo { animation: quake 0.5s infinite; }
-        
-        /* 75. Glitch */
-        @keyframes glitch {
-            0%, 100% { 
-                transform: translate(0);
-                opacity: 1;
-            }
-            10% { 
-                transform: translate(-2px, -2px);
-                opacity: 0.8;
-            }
-            20% { 
-                transform: translate(2px, 2px);
-                opacity: 0.9;
-            }
-            30% { 
-                transform: translate(-2px, 2px);
-                opacity: 0.8;
-            }
-            40% { 
-                transform: translate(2px, -2px);
-                opacity: 0.9;
-            }
-        }
-        
-        .glitch-demo { animation: glitch 1s infinite; }
-        
-        /* Ripple effect برای نسخه جدید */
-        @keyframes ripple {
-            0% { transform: scale(0) translate(-50%, -50%); opacity: 1; }
-            100% { transform: scale(4) translate(-50%, -50%); opacity: 0; }
-        }
-        
         /* Shimmer effect */
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-        
         .shimmer-demo {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 1000px 100%;
             animation: shimmer 3s infinite linear;
         }
         
-        /* Keyframes اصلی */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-40px); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.15); opacity: 0.8; }
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes flip {
-            0% { transform: perspective(400px) rotateY(0); }
-            40% { transform: perspective(400px) translateZ(150px) rotateY(170deg); }
-            50% { transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1); }
-            80% { transform: perspective(400px) rotateY(360deg) scale(0.95); }
-            100% { transform: perspective(400px) scale(1); }
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-12px); }
-            20%, 40%, 60%, 80% { transform: translateX(12px); }
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.3); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.3); }
-            70% { transform: scale(1); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes zoomIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; transform: translateY(30px); }
-        }
-        
-        @keyframes zoomOut {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 0; transform: scale(0); }
-        }
-        
-        @keyframes bounceOut {
-            0% { transform: scale(1); opacity: 1; }
-            20% { transform: scale(0.9); opacity: 1; }
-            50%, 55% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.3); opacity: 0; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
-        }
-        
-        @keyframes colorChange {
-            0% { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
-            33% { background: linear-gradient(135deg, var(--accent), var(--purple)); }
-            66% { background: linear-gradient(135deg, var(--success), #06d6a0); }
-            100% { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
-        }
-        
-        @keyframes swing {
-            20% { transform: rotate(15deg); }
-            40% { transform: rotate(-10deg); }
-            60% { transform: rotate(5deg); }
-            80% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
-        }
-        
-        @keyframes tada {
-            0%, 100% { transform: scale(1); }
-            10%, 20% { transform: scale(0.9) rotate(-5deg); }
-            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(5deg); }
-            40%, 60%, 80% { transform: scale(1.1) rotate(-5deg); }
-        }
-        
-        @keyframes wobble {
-            0%, 100% { transform: translateX(0); }
-            15% { transform: translateX(-30px) rotate(-10deg); }
-            30% { transform: translateX(20px) rotate(8deg); }
-            45% { transform: translateX(-15px) rotate(-6deg); }
-            60% { transform: translateX(10px) rotate(4deg); }
-            75% { transform: translateX(-5px) rotate(-2deg); }
-        }
-        
-        @keyframes jello {
-            0%, 100% { transform: scale3d(1, 1, 1); }
-            15% { transform: scale3d(1.25, 0.75, 1); }
-            30% { transform: scale3d(0.75, 1.25, 1); }
-            45% { transform: scale3d(1.15, 0.85, 1); }
-            60% { transform: scale3d(0.95, 1.05, 1); }
-            75% { transform: scale3d(1.05, 0.95, 1); }
-        }
-        
-        @keyframes rubberBand {
-            0% { transform: scale(1); }
-            30% { transform: scaleX(1.25) scaleY(0.75); }
-            40% { transform: scaleX(0.75) scaleY(1.25); }
-            60% { transform: scaleX(1.15) scaleY(0.85); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes flipInX {
-            0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
-            40% { transform: perspective(400px) rotateX(-20deg); }
-            60% { transform: perspective(400px) rotateX(10deg); opacity: 1; }
-            80% { transform: perspective(400px) rotateX(-5deg); }
-            100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
-        }
-        
-        @keyframes flipInY {
-            0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
-            40% { transform: perspective(400px) rotateY(-20deg); }
-            60% { transform: perspective(400px) rotateY(10deg); opacity: 1; }
-            80% { transform: perspective(400px) rotateY(-5deg); }
-            100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
-        }
-        
-        @keyframes lightSpeedIn {
-            0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
-            60% { transform: translateX(-20%) skewX(30deg); opacity: 1; }
-            80% { transform: translateX(0%) skewX(-15deg); opacity: 1; }
-            100% { transform: translateX(0%) skewX(0deg); opacity: 1; }
-        }
-        
-        @keyframes lightSpeedOut {
-            0% { transform: translateX(0%) skewX(0deg); opacity: 1; }
-            100% { transform: translateX(100%) skewX(30deg); opacity: 0; }
-        }
-        
-        @keyframes rollIn {
-            0% { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
-            100% { opacity: 1; transform: translateX(0px) rotate(0deg); }
-        }
-        
-        @keyframes rollOut {
-            0% { opacity: 1; transform: translateX(0px) rotate(0deg); }
-            100% { opacity: 0; transform: translateX(100%) rotate(120deg); }
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: translateX(0) translateZ(0) scaleY(1); }
-            50% { transform: translateX(-25%) translateZ(0) scaleY(0.55); }
-        }
-        
-        @keyframes orbit {
-            0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 10px var(--primary); }
-            50% { box-shadow: 0 0 30px var(--accent); }
-        }
-        
-        @keyframes breathing {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
         }
         
         .responsive {
@@ -1265,7 +749,7 @@
         <header>
             <h1><i class="fas fa-magic"></i> کتابخانه کامل CSS Animations</h1>
             <p style="color: #666; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-                <span class="highlight" style="color: var(--accent); font-weight: bold;">۶۵+ انیمیشن مختلف</span> با کدهای کامل Keyframe - قابل کپی و استفاده
+                <span class="highlight" style="color: var(--accent); font-weight: bold;">۳۵+ انیمیشن مختلف</span> با کدهای کامل Keyframe - قابل کپی و استفاده
             </p>
             <div style="margin-top: 25px;">
                 <span class="tag">CSS3</span>
@@ -1275,7 +759,6 @@
                 <span class="tag">Transitions</span>
                 <span class="tag">Interactive</span>
                 <span class="tag">Responsive</span>
-                <span class="tag">65+ Effects</span>
             </div>
         </header>
         
@@ -1294,9 +777,6 @@
             </div>
             <div class="category-tab" onclick="showCategory('special')">
                 <i class="fas fa-gem"></i> انیمیشن‌های ویژه
-            </div>
-            <div class="category-tab" onclick="showCategory('new')">
-                <i class="fas fa-star"></i> انیمیشن‌های جدید
             </div>
         </div>
         
@@ -1493,6 +973,98 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Roll In -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-dice"></i> Roll In</h3>
+                        <p>غلتیدن به داخل</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-entrance rollIn-demo" id="rollIn-demo">
+                            <i class="fas fa-dice"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('rollIn-demo', 'rollIn', '2s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('rollIn-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: rollIn 2s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes rollIn {</div>
+                            <div class="code-line indent-1" data-line="2">  0% {</div>
+                            <div class="code-line indent-2" data-line="3">    opacity: 0;</div>
+                            <div class="code-line indent-2" data-line="4">    transform: translateX(-100%) rotate(-120deg);</div>
+                            <div class="code-line indent-1" data-line="5">  }</div>
+                            <div class="code-line indent-1" data-line="6">  100% {</div>
+                            <div class="code-line indent-2" data-line="7">    opacity: 1;</div>
+                            <div class="code-line indent-2" data-line="8">    transform: translateX(0px) rotate(0deg);</div>
+                            <div class="code-line indent-1" data-line="9">  }</div>
+                            <div class="code-line" data-line="10">}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flip In X -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sync-alt"></i> Flip In X</h3>
+                        <p>چرخش حول محور X</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-entrance flipInX-demo" id="flipInX-demo">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('flipInX-demo', 'flipInX', '2s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('flipInX-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: flipInX 2s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes flipInX {</div>
+                            <div class="code-line indent-1" data-line="2">  0% {</div>
+                            <div class="code-line indent-2" data-line="3">    transform: perspective(400px) rotateX(90deg);</div>
+                            <div class="code-line indent-2" data-line="4">    opacity: 0;</div>
+                            <div class="code-line indent-1" data-line="5">  }</div>
+                            <div class="code-line indent-1" data-line="6">  40% {</div>
+                            <div class="code-line indent-2" data-line="7">    transform: perspective(400px) rotateX(-20deg);</div>
+                            <div class="code-line indent-1" data-line="8">  }</div>
+                            <div class="code-line indent-1" data-line="9">  60% {</div>
+                            <div class="code-line indent-2" data-line="10">    transform: perspective(400px) rotateX(10deg);</div>
+                            <div class="code-line indent-2" data-line="11">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="12">  }</div>
+                            <div class="code-line indent-1" data-line="13">  80% {</div>
+                            <div class="code-line indent-2" data-line="14">    transform: perspective(400px) rotateX(-5deg);</div>
+                            <div class="code-line indent-1" data-line="15">  }</div>
+                            <div class="code-line indent-1" data-line="16">  100% {</div>
+                            <div class="code-line indent-2" data-line="17">    transform: perspective(400px) rotateX(0deg);</div>
+                            <div class="code-line indent-2" data-line="18">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="19">  }</div>
+                            <div class="code-line" data-line="20">}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1679,6 +1251,96 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Jello -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cookie-bite"></i> Jello</h3>
+                        <p>حرکت ژله‌ای</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-attention jello-demo" id="jello-demo">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('jello-demo', 'jello', '1.5s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('jello-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: jello 1.5s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes jello {</div>
+                            <div class="code-line indent-1" data-line="2">  0%, 100% {</div>
+                            <div class="code-line indent-2" data-line="3">    transform: scale3d(1, 1, 1);</div>
+                            <div class="code-line indent-1" data-line="4">  }</div>
+                            <div class="code-line indent-1" data-line="5">  15% {</div>
+                            <div class="code-line indent-2" data-line="6">    transform: scale3d(1.25, 0.75, 1);</div>
+                            <div class="code-line indent-1" data-line="7">  }</div>
+                            <div class="code-line indent-1" data-line="8">  30% {</div>
+                            <div class="code-line indent-2" data-line="9">    transform: scale3d(0.75, 1.25, 1);</div>
+                            <div class="code-line indent-1" data-line="10">  }</div>
+                            <div class="code-line indent-1" data-line="11">  45% {</div>
+                            <div class="code-line indent-2" data-line="12">    transform: scale3d(1.15, 0.85, 1);</div>
+                            <div class="code-line indent-1" data-line="13">  }</div>
+                            <div class="code-line indent-1" data-line="14">  60% {</div>
+                            <div class="code-line indent-2" data-line="15">    transform: scale3d(0.95, 1.05, 1);</div>
+                            <div class="code-line indent-1" data-line="16">  }</div>
+                            <div class="code-line indent-1" data-line="17">  75% {</div>
+                            <div class="code-line indent-2" data-line="18">    transform: scale3d(1.05, 0.95, 1);</div>
+                            <div class="code-line indent-1" data-line="19">  }</div>
+                            <div class="code-line" data-line="20">}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blink -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-eye"></i> Blink</h3>
+                        <p>چشمک زدن</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-attention blink-demo" id="blink-demo">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('blink-demo', 'blink', '1.5s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('blink-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: blink 1.5s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes blink {</div>
+                            <div class="code-line indent-1" data-line="2">  0%, 100% {</div>
+                            <div class="code-line indent-2" data-line="3">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="4">  }</div>
+                            <div class="code-line indent-1" data-line="5">  50% {</div>
+                            <div class="code-line indent-2" data-line="6">    opacity: 0.2;</div>
+                            <div class="code-line indent-1" data-line="7">  }</div>
+                            <div class="code-line" data-line="8">}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1823,6 +1485,88 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Light Speed Out -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Light Speed Out</h3>
+                        <p>خروج با سرعت نور</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-exit lightSpeedOut-demo" id="lightSpeedOut-demo">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('lightSpeedOut-demo', 'lightSpeedOut', '2s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('lightSpeedOut-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: lightSpeedOut 2s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes lightSpeedOut {</div>
+                            <div class="code-line indent-1" data-line="2">  0% {</div>
+                            <div class="code-line indent-2" data-line="3">    transform: translateX(0%) skewX(0deg);</div>
+                            <div class="code-line indent-2" data-line="4">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="5">  }</div>
+                            <div class="code-line indent-1" data-line="6">  100% {</div>
+                            <div class="code-line indent-2" data-line="7">    transform: translateX(100%) skewX(30deg);</div>
+                            <div class="code-line indent-2" data-line="8">    opacity: 0;</div>
+                            <div class="code-line indent-1" data-line="9">  }</div>
+                            <div class="code-line" data-line="10">}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Roll Out -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-dice"></i> Roll Out</h3>
+                        <p>غلتیدن به بیرون</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-exit rollOut-demo" id="rollOut-demo">
+                            <i class="fas fa-dice"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('rollOut-demo', 'rollOut', '2s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('rollOut-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: rollOut 2s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes rollOut {</div>
+                            <div class="code-line indent-1" data-line="2">  0% {</div>
+                            <div class="code-line indent-2" data-line="3">    opacity: 1;</div>
+                            <div class="code-line indent-2" data-line="4">    transform: translateX(0px) rotate(0deg);</div>
+                            <div class="code-line indent-1" data-line="5">  }</div>
+                            <div class="code-line indent-1" data-line="6">  100% {</div>
+                            <div class="code-line indent-2" data-line="7">    opacity: 0;</div>
+                            <div class="code-line indent-2" data-line="8">    transform: translateX(100%) rotate(120deg);</div>
+                            <div class="code-line indent-1" data-line="9">  }</div>
+                            <div class="code-line" data-line="10">}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1922,6 +1666,57 @@
                             <div class="code-line indent-2" data-line="20">    animation-timing-function: ease-in;</div>
                             <div class="code-line indent-1" data-line="21">  }</div>
                             <div class="code-line" data-line="22">}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flip In Y -->
+                <div class="animation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sync-alt"></i> Flip In Y</h3>
+                        <p>چرخش حول محور Y</p>
+                    </div>
+                    <div class="demo-area">
+                        <div class="demo-element demo-element-rotation flipInY-demo" id="flipInY-demo">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="controls">
+                            <button onclick="playAnimation('flipInY-demo', 'flipInY', '2s infinite')">
+                                <i class="fas fa-play"></i> اجرا
+                            </button>
+                            <button onclick="toggleAnimation('flipInY-demo')">
+                                <i class="fas fa-pause"></i> توقف/شروع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="code-section">
+                        <div class="code-comment">/* Usage */</div>
+                        <div class="code-line" data-line="1">.element {</div>
+                        <div class="code-line indent-1" data-line="2">  animation: flipInY 2s infinite;</div>
+                        <div class="code-line" data-line="3">}</div>
+                        
+                        <div class="keyframe-code">
+                            <div class="code-comment">/* Keyframe Code */</div>
+                            <div class="code-line" data-line="1">@keyframes flipInY {</div>
+                            <div class="code-line indent-1" data-line="2">  0% {</div>
+                            <div class="code-line indent-2" data-line="3">    transform: perspective(400px) rotateY(90deg);</div>
+                            <div class="code-line indent-2" data-line="4">    opacity: 0;</div>
+                            <div class="code-line indent-1" data-line="5">  }</div>
+                            <div class="code-line indent-1" data-line="6">  40% {</div>
+                            <div class="code-line indent-2" data-line="7">    transform: perspective(400px) rotateY(-20deg);</div>
+                            <div class="code-line indent-1" data-line="8">  }</div>
+                            <div class="code-line indent-1" data-line="9">  60% {</div>
+                            <div class="code-line indent-2" data-line="10">    transform: perspective(400px) rotateY(10deg);</div>
+                            <div class="code-line indent-2" data-line="11">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="12">  }</div>
+                            <div class="code-line indent-1" data-line="13">  80% {</div>
+                            <div class="code-line indent-2" data-line="14">    transform: perspective(400px) rotateY(-5deg);</div>
+                            <div class="code-line indent-1" data-line="15">  }</div>
+                            <div class="code-line indent-1" data-line="16">  100% {</div>
+                            <div class="code-line indent-2" data-line="17">    transform: perspective(400px) rotateY(0deg);</div>
+                            <div class="code-line indent-2" data-line="18">    opacity: 1;</div>
+                            <div class="code-line indent-1" data-line="19">  }</div>
+                            <div class="code-line" data-line="20">}</div>
                         </div>
                     </div>
                 </div>
@@ -2146,477 +1941,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- بخش 6: انیمیشن‌های جدید -->
-        <section class="section category-content" id="new">
-            <h2><i class="fas fa-star"></i> انیمیشن‌های جدید (۳۰ انیمیشن)</h2>
-            <div class="explanation">
-                ۳۰ انیمیشن جدید و جذاب اضافه شده! این انیمیشن‌ها شامل افکت‌های خلاقانه و ترکیبی هستند که می‌توانند طراحی‌های شما را به سطح جدیدی برسانند.
-            </div>
-            
-            <div class="animation-grid">
-                <!-- Fold -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-layer-group"></i> Fold</h3>
-                        <p>تا شدن</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new fold-demo" id="fold-demo">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('fold-demo', 'fold', '1.5s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('fold-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: fold 1.5s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes fold {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: scaleY(1); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: scaleY(0.1); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
                 
-                <!-- Flare -->
+                <!-- Glow -->
                 <div class="animation-card">
                     <div class="card-header">
-                        <h3><i class="fas fa-fire"></i> Flare</h3>
-                        <p>شعله‌ور شدن</p>
+                        <h3><i class="fas fa-lightbulb"></i> Glow</h3>
+                        <p>درخشش متناوب</p>
                     </div>
                     <div class="demo-area">
-                        <div class="demo-element demo-element-new flare-demo" id="flare-demo">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('flare-demo', 'flare', '2s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('flare-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: flare 2s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes flare {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% {</div>
-                            <div class="code-line indent-2" data-line="3">    transform: scale(1);</div>
-                            <div class="code-line indent-2" data-line="4">    filter: brightness(1);</div>
-                            <div class="code-line indent-1" data-line="5">  }</div>
-                            <div class="code-line indent-1" data-line="6">  50% {</div>
-                            <div class="code-line indent-2" data-line="7">    transform: scale(1.2);</div>
-                            <div class="code-line indent-2" data-line="8">    filter: brightness(1.5) drop-shadow(0 0 10px #ff9e00);</div>
-                            <div class="code-line indent-1" data-line="9">  }</div>
-                            <div class="code-line" data-line="10">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pendulum -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-weight-hanging"></i> Pendulum</h3>
-                        <p>آونگ</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new pendulum-demo" id="pendulum-demo">
-                            <i class="fas fa-weight-hanging"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('pendulum-demo', 'pendulum', '2s infinite ease-in-out')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('pendulum-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: pendulum 2s infinite ease-in-out;</div>
-                        <div class="code-line" data-line="3">  transform-origin: top center;</div>
-                        <div class="code-line" data-line="4">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes pendulum {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: rotate(-30deg); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: rotate(30deg); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bounce Up -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-arrow-up"></i> Bounce Up</h3>
-                        <p>پرش به بالا</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new bounceUp-demo" id="bounceUp-demo">
-                            <i class="fas fa-arrow-up"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('bounceUp-demo', 'bounceUp', '1.2s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('bounceUp-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: bounceUp 1.2s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes bounceUp {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: translateY(0); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: translateY(-25px); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Bounce Right -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-arrow-right"></i> Bounce Right</h3>
-                        <p>پرش به راست</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new bounceRight-demo" id="bounceRight-demo">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('bounceRight-demo', 'bounceRight', '1.2s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('bounceRight-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: bounceRight 1.2s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes bounceRight {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: translateX(0); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: translateX(25px); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Rotate Scale -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-expand-alt"></i> Rotate Scale</h3>
-                        <p>چرخش با بزرگ‌شدن</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new rotateScale-demo" id="rotateScale-demo">
-                            <i class="fas fa-expand-alt"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('rotateScale-demo', 'rotateScale', '3s infinite linear')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('rotateScale-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: rotateScale 3s infinite linear;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes rotateScale {</div>
-                            <div class="code-line indent-1" data-line="2">  0% { transform: rotate(0deg) scale(1); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: rotate(180deg) scale(1.2); }</div>
-                            <div class="code-line indent-1" data-line="4">  100% { transform: rotate(360deg) scale(1); }</div>
-                            <div class="code-line" data-line="5">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide Up -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-arrow-up"></i> Slide Up</h3>
-                        <p>حرکت به بالا</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new slideUp-demo" id="slideUp-demo">
-                            <i class="fas fa-arrow-up"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('slideUp-demo', 'slideUp', '2s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('slideUp-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: slideUp 2s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes slideUp {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: translateY(0); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: translateY(-20px); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide Down -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-arrow-down"></i> Slide Down</h3>
-                        <p>حرکت به پایین</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new slideDownNew-demo" id="slideDownNew-demo">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('slideDownNew-demo', 'slideDown', '2s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('slideDownNew-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: slideDown 2s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes slideDown {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: translateY(0); }</div>
-                            <div class="code-line indent-1" data-line="3">  50% { transform: translateY(20px); }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Magnet -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-magnet"></i> Magnet</h3>
-                        <p>آهنربا</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new magnet-demo" id="magnet-demo">
-                            <i class="fas fa-magnet"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('magnet-demo', 'magnet', '1.5s infinite')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('magnet-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: magnet 1.5s infinite;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes magnet {</div>
-                            <div class="code-line indent-1" data-line="2">  0%, 100% { transform: translateX(0); }</div>
-                            <div class="code-line indent-1" data-line="3">  25% { transform: translateX(-15px); }</div>
-                            <div class="code-line indent-1" data-line="4">  75% { transform: translateX(15px); }</div>
-                            <div class="code-line" data-line="5">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Burst -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-bomb"></i> Burst</h3>
-                        <p>ترکیدن</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new burst-demo" id="burst-demo">
-                            <i class="fas fa-bomb"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('burst-demo', 'burst', '1.5s infinite alternate')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('burst-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: burst 1.5s infinite alternate;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes burst {</div>
-                            <div class="code-line indent-1" data-line="2">  0% { transform: scale(1); opacity: 1; }</div>
-                            <div class="code-line indent-1" data-line="3">  100% { transform: scale(1.5); opacity: 0; }</div>
-                            <div class="code-line" data-line="4">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Radar -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-satellite-dish"></i> Radar</h3>
-                        <p>رادار</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new radar-demo" id="radar-demo">
-                            <i class="fas fa-satellite-dish"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('radar-demo', 'radar', '2s infinite linear')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('radar-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: radar 2s infinite linear;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes radar {</div>
-                            <div class="code-line indent-1" data-line="2">  0% {</div>
-                            <div class="code-line indent-2" data-line="3">    transform: rotate(0deg);</div>
-                            <div class="code-line indent-2" data-line="4">    box-shadow: 0 0 0 rgba(67, 97, 238, 0);</div>
-                            <div class="code-line indent-1" data-line="5">  }</div>
-                            <div class="code-line indent-1" data-line="6">  100% {</div>
-                            <div class="code-line indent-2" data-line="7">    transform: rotate(360deg);</div>
-                            <div class="code-line indent-2" data-line="8">    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);</div>
-                            <div class="code-line indent-1" data-line="9">  }</div>
-                            <div class="code-line" data-line="10">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Spiral -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-infinity"></i> Spiral</h3>
-                        <p>مارپیچ</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new spiral-demo" id="spiral-demo">
-                            <i class="fas fa-infinity"></i>
-                        </div>
-                        <div class="controls">
-                            <button onclick="playAnimation('spiral-demo', 'spiral', '3s infinite linear')">
-                                <i class="fas fa-play"></i> اجرا
-                            </button>
-                            <button onclick="toggleAnimation('spiral-demo')">
-                                <i class="fas fa-pause"></i> توقف/شروع
-                            </button>
-                        </div>
-                    </div>
-                    <div class="code-section">
-                        <div class="code-comment">/* Usage */</div>
-                        <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: spiral 3s infinite linear;</div>
-                        <div class="code-line" data-line="3">}</div>
-                        
-                        <div class="keyframe-code">
-                            <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes spiral {</div>
-                            <div class="code-line indent-1" data-line="2">  0% {</div>
-                            <div class="code-line indent-2" data-line="3">    transform: rotate(0deg) scale(1);</div>
-                            <div class="code-line indent-2" data-line="4">    border-radius: 15px;</div>
-                            <div class="code-line indent-1" data-line="5">  }</div>
-                            <div class="code-line indent-1" data-line="6">  50% {</div>
-                            <div class="code-line indent-2" data-line="7">    transform: rotate(180deg) scale(0.7);</div>
-                            <div class="code-line indent-2" data-line="8">    border-radius: 50%;</div>
-                            <div class="code-line indent-1" data-line="9">  }</div>
-                            <div class="code-line indent-1" data-line="10">  100% {</div>
-                            <div class="code-line indent-2" data-line="11">    transform: rotate(360deg) scale(1);</div>
-                            <div class="code-line indent-2" data-line="12">    border-radius: 15px;</div>
-                            <div class="code-line indent-1" data-line="13">  }</div>
-                            <div class="code-line" data-line="14">}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Neon -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-lightbulb"></i> Neon</h3>
-                        <p>نئون چشمک‌زن</p>
-                    </div>
-                    <div class="demo-area">
-                        <div class="demo-element demo-element-new neon-demo" id="neon-demo">
+                        <div class="demo-element demo-element-special glow-demo" id="glow-demo">
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <div class="controls">
-                            <button onclick="playAnimation('neon-demo', 'neon', '1.5s infinite alternate')">
+                            <button onclick="playAnimation('glow-demo', 'glow', '2s infinite')">
                                 <i class="fas fa-play"></i> اجرا
                             </button>
-                            <button onclick="toggleAnimation('neon-demo')">
+                            <button onclick="toggleAnimation('glow-demo')">
                                 <i class="fas fa-pause"></i> توقف/شروع
                             </button>
                         </div>
@@ -2624,45 +1964,38 @@
                     <div class="code-section">
                         <div class="code-comment">/* Usage */</div>
                         <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: neon 1.5s infinite alternate;</div>
+                        <div class="code-line indent-1" data-line="2">  animation: glow 2s infinite;</div>
                         <div class="code-line" data-line="3">}</div>
                         
                         <div class="keyframe-code">
                             <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes neon {</div>
+                            <div class="code-line" data-line="1">@keyframes glow {</div>
                             <div class="code-line indent-1" data-line="2">  0%, 100% {</div>
-                            <div class="code-line indent-2" data-line="3">    box-shadow: 0 0 5px var(--cyan),</div>
-                            <div class="code-line indent-3" data-line="4">                0 0 10px var(--cyan),</div>
-                            <div class="code-line indent-3" data-line="5">                0 0 15px var(--cyan);</div>
-                            <div class="code-line indent-2" data-line="6">    filter: brightness(1);</div>
+                            <div class="code-line indent-2" data-line="3">    box-shadow: 0 0 10px var(--primary);</div>
+                            <div class="code-line indent-1" data-line="4">  }</div>
+                            <div class="code-line indent-1" data-line="5">  50% {</div>
+                            <div class="code-line indent-2" data-line="6">    box-shadow: 0 0 30px var(--accent);</div>
                             <div class="code-line indent-1" data-line="7">  }</div>
-                            <div class="code-line indent-1" data-line="8">  50% {</div>
-                            <div class="code-line indent-2" data-line="9">    box-shadow: 0 0 10px var(--cyan),</div>
-                            <div class="code-line indent-3" data-line="10">                0 0 20px var(--cyan),</div>
-                            <div class="code-line indent-3" data-line="11">                0 0 30px var(--cyan),</div>
-                            <div class="code-line indent-3" data-line="12">                0 0 40px var(--cyan);</div>
-                            <div class="code-line indent-2" data-line="13">    filter: brightness(1.5);</div>
-                            <div class="code-line indent-1" data-line="14">  }</div>
-                            <div class="code-line" data-line="15">}</div>
+                            <div class="code-line" data-line="8">}</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Portal -->
+                <!-- Breathing -->
                 <div class="animation-card">
                     <div class="card-header">
-                        <h3><i class="fas fa-door-open"></i> Portal</h3>
-                        <p>پورتال</p>
+                        <h3><i class="fas fa-wind"></i> Breathing</h3>
+                        <p>حرکت دم و بازدم</p>
                     </div>
                     <div class="demo-area">
-                        <div class="demo-element demo-element-new portal-demo" id="portal-demo">
-                            <i class="fas fa-door-open"></i>
+                        <div class="demo-element demo-element-special breathing-demo" id="breathing-demo">
+                            <i class="fas fa-wind"></i>
                         </div>
                         <div class="controls">
-                            <button onclick="playAnimation('portal-demo', 'portal', '3s infinite linear')">
+                            <button onclick="playAnimation('breathing-demo', 'breathing', '3s ease-in-out infinite')">
                                 <i class="fas fa-play"></i> اجرا
                             </button>
-                            <button onclick="toggleAnimation('portal-demo')">
+                            <button onclick="toggleAnimation('breathing-demo')">
                                 <i class="fas fa-pause"></i> توقف/شروع
                             </button>
                         </div>
@@ -2670,51 +2003,35 @@
                     <div class="code-section">
                         <div class="code-comment">/* Usage */</div>
                         <div class="code-line" data-line="1">.element {</div>
-                        <div class="code-line indent-1" data-line="2">  animation: portal 3s infinite linear;</div>
+                        <div class="code-line indent-1" data-line="2">  animation: breathing 3s ease-in-out infinite;</div>
                         <div class="code-line" data-line="3">}</div>
                         
                         <div class="keyframe-code">
                             <div class="code-comment">/* Keyframe Code */</div>
-                            <div class="code-line" data-line="1">@keyframes portal {</div>
-                            <div class="code-line indent-1" data-line="2">  0% {</div>
-                            <div class="code-line indent-2" data-line="3">    transform: rotate(0deg) scale(1);</div>
-                            <div class="code-line indent-2" data-line="4">    box-shadow: 0 0 0 rgba(157, 78, 221, 0);</div>
+                            <div class="code-line" data-line="1">@keyframes breathing {</div>
+                            <div class="code-line indent-1" data-line="2">  0%, 100% {</div>
+                            <div class="code-line indent-2" data-line="3">    transform: scale(1);</div>
+                            <div class="code-line indent-2" data-line="4">    opacity: 0.8;</div>
                             <div class="code-line indent-1" data-line="5">  }</div>
                             <div class="code-line indent-1" data-line="6">  50% {</div>
-                            <div class="code-line indent-2" data-line="7">    transform: rotate(180deg) scale(1.2);</div>
-                            <div class="code-line indent-2" data-line="8">    box-shadow: 0 0 40px rgba(157, 78, 221, 0.8);</div>
+                            <div class="code-line indent-2" data-line="7">    transform: scale(1.1);</div>
+                            <div class="code-line indent-2" data-line="8">    opacity: 1;</div>
                             <div class="code-line indent-1" data-line="9">  }</div>
-                            <div class="code-line indent-1" data-line="10">  100% {</div>
-                            <div class="code-line indent-2" data-line="11">    transform: rotate(360deg) scale(1);</div>
-                            <div class="code-line indent-2" data-line="12">    box-shadow: 0 0 0 rgba(157, 78, 221, 0);</div>
-                            <div class="code-line indent-1" data-line="13">  }</div>
-                            <div class="code-line" data-line="14">}</div>
+                            <div class="code-line" data-line="10">}</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="showAllNewAnimations()" style="font-size: 1.1rem; padding: 15px 30px;">
-                    <i class="fas fa-play-circle"></i> نمایش همه انیمیشن‌های جدید
-                </button>
             </div>
         </section>
         
         <footer>
-            <h3 style="color: white; margin-bottom: 20px;">کتابخانه کامل CSS Animations - نسخه پیشرفته (۶۵+ انیمیشن)</h3>
+            <h3 style="color: white; margin-bottom: 20px;">کتابخانه کامل CSS Animations - نسخه پیشرفته</h3>
             <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">
-                <span style="color: var(--success); font-weight: bold;">۶۵+ انیمیشن مختلف</span> در <span style="color: var(--accent); font-weight: bold;">۶ دسته‌بندی</span> با کدهای Keyframe کامل
+                <span style="color: var(--success); font-weight: bold;">۳۵+ انیمیشن مختلف</span> در <span style="color: var(--accent); font-weight: bold;">۵ دسته‌بندی</span> با کدهای Keyframe کامل
             </p>
             <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; max-width: 800px; margin: 0 auto;">
                 تمامی کدها قابل کپی و استفاده مستقیم در پروژه‌های شما هستند | طراحی شده با <i class="fas fa-heart" style="color:#ff6b6b; animation: heartbeat 1.5s infinite;"></i>
             </p>
-            <div style="margin-top: 20px;">
-                <span class="tag">کاملاً ریسپانسیو</span>
-                <span class="tag">کدهای آماده</span>
-                <span class="tag">نمایش زنده</span>
-                <span class="tag">کنترل کامل</span>
-            </div>
         </footer>
     </div>
 
@@ -2781,44 +2098,6 @@
             element.offsetHeight;
         }
 
-        // تابع برای اجرای همه انیمیشن‌های جدید
-        function showAllNewAnimations() {
-            const newAnimations = [
-                {id: 'fold-demo', name: 'fold', params: '1.5s infinite'},
-                {id: 'flare-demo', name: 'flare', params: '2s infinite'},
-                {id: 'pendulum-demo', name: 'pendulum', params: '2s infinite ease-in-out'},
-                {id: 'bounceUp-demo', name: 'bounceUp', params: '1.2s infinite'},
-                {id: 'bounceRight-demo', name: 'bounceRight', params: '1.2s infinite'},
-                {id: 'rotateScale-demo', name: 'rotateScale', params: '3s infinite linear'},
-                {id: 'slideUp-demo', name: 'slideUp', params: '2s infinite'},
-                {id: 'slideDownNew-demo', name: 'slideDown', params: '2s infinite'},
-                {id: 'magnet-demo', name: 'magnet', params: '1.5s infinite'},
-                {id: 'burst-demo', name: 'burst', params: '1.5s infinite alternate'},
-                {id: 'radar-demo', name: 'radar', params: '2s infinite linear'},
-                {id: 'spiral-demo', name: 'spiral', params: '3s infinite linear'},
-                {id: 'neon-demo', name: 'neon', params: '1.5s infinite alternate'},
-                {id: 'portal-demo', name: 'portal', params: '3s infinite linear'}
-            ];
-
-            // متوقف کردن همه انیمیشن‌های قبلی
-            newAnimations.forEach(anim => {
-                const element = document.getElementById(anim.id);
-                if (element) {
-                    element.style.animation = '';
-                }
-            });
-
-            // اجرای انیمیشن‌ها با تأخیر
-            newAnimations.forEach((anim, index) => {
-                setTimeout(() => {
-                    playAnimation(anim.id, anim.name, anim.params);
-                }, index * 200);
-            });
-
-            // اسکرول به بخش انیمیشن‌های جدید
-            document.getElementById('new').scrollIntoView({behavior: 'smooth'});
-        }
-
         // اجرای خودکار برخی انیمیشن‌ها هنگام لود صفحه
         document.addEventListener('DOMContentLoaded', function() {
             // نمایش کارت‌ها با تأخیر
@@ -2850,10 +2129,6 @@
             setTimeout(() => {
                 playAnimation('float-demo', 'float', '3s ease-in-out infinite');
             }, 1300);
-
-            setTimeout(() => {
-                playAnimation('fold-demo', 'fold', '1.5s infinite');
-            }, 1500);
         });
     </script>
 </body>
