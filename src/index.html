@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کتابخانه کامل CSS Animations (85+ انیمیشن)</title>
+    <title>کتابخانه کامل CSS Animations (100+ انیمیشن)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* متغیرهای رنگ */
@@ -21,6 +21,11 @@
             --lime: #a7c957;
             --dark: #2d3047;
             --light: #f8f9fa;
+            --indigo: #3a0ca3;
+            --yellow: #ffd166;
+            --red: #ef476f;
+            --green: #06d6a0;
+            --blue: #118ab2;
         }
 
         /* ریست استایل‌ها */
@@ -148,6 +153,70 @@
             transform: scale(1.05);
         }
 
+        /* کنترل‌های اصلی */
+        .main-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            transition: width 0.4s ease;
+            z-index: 1;
+        }
+
+        .control-btn:hover:before {
+            width: 100%;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-btn i, .control-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-all {
+            background: linear-gradient(135deg, var(--success), var(--teal));
+        }
+
+        .pause-all {
+            background: linear-gradient(135deg, var(--warning), var(--orange));
+        }
+
+        .reset-all {
+            background: linear-gradient(135deg, var(--pink), var(--accent));
+        }
+
         /* گرید انیمیشن‌ها */
         .animation-grid {
             display: grid;
@@ -232,8 +301,11 @@
         .demo-attention { background: linear-gradient(135deg, var(--accent), var(--pink)); }
         .demo-exit { background: linear-gradient(135deg, var(--warning), var(--orange)); }
         .demo-rotation { background: linear-gradient(135deg, var(--purple), #c77dff); }
-        .demo-special { background: linear-gradient(135deg, #7209b7, #560bad); }
-        .demo-new { background: linear-gradient(135deg, var(--cyan), #0096c7); }
+        .demo-special { background: linear-gradient(135deg, var(--indigo), var(--primary)); }
+        .demo-new { background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+        .demo-fade { background: linear-gradient(135deg, var(--lime), var(--green)); }
+        .demo-bounce { background: linear-gradient(135deg, var(--yellow), var(--orange)); }
+        .demo-zoom { background: linear-gradient(135deg, var(--red), var(--pink)); }
 
         .controls {
             display: flex;
@@ -243,7 +315,7 @@
             flex-wrap: wrap;
         }
 
-        button {
+        .action-btn {
             padding: 10px 20px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -260,7 +332,7 @@
             overflow: hidden;
         }
 
-        button:before {
+        .action-btn:before {
             content: '';
             position: absolute;
             top: 0;
@@ -272,31 +344,30 @@
             z-index: 1;
         }
 
-        button:hover:before {
+        .action-btn:hover:before {
             width: 100%;
         }
 
-        button:hover {
+        .action-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        button i {
+        .action-btn i, .action-btn span {
             position: relative;
             z-index: 2;
         }
 
-        button span {
-            position: relative;
-            z-index: 2;
-        }
-
-        .copy-btn {
+        .play-btn {
             background: var(--success);
         }
 
-        .copy-btn:hover {
-            background: #06d6a0;
+        .pause-btn {
+            background: var(--warning);
+        }
+
+        .copy-btn {
+            background: var(--cyan);
         }
 
         .code-section {
@@ -380,6 +451,29 @@
             }
         }
 
+        /* نوتیفیکیشن */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* ریسپانسیو */
         @media (max-width: 1200px) {
             .animation-grid {
@@ -408,6 +502,17 @@
             .stat-number {
                 font-size: 1.8rem;
             }
+            
+            .main-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .control-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -426,7 +531,7 @@
                 align-items: center;
             }
             
-            button {
+            .action-btn {
                 width: 100%;
                 justify-content: center;
             }
@@ -438,16 +543,16 @@
         <header>
             <h1><i class="fas fa-magic"></i> کتابخانه کامل CSS Animations</h1>
             <p class="subtitle">
-                <span class="highlight">۸۵+ انیمیشن مختلف</span> با کدهای کامل Keyframe - قابل کپی و استفاده مستقیم
+                <span class="highlight">۱۰۰+ انیمیشن مختلف</span> با کدهای کامل Keyframe - قابل کپی و استفاده مستقیم
             </p>
             
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number" id="totalAnimations">85</div>
+                    <div class="stat-number" id="totalAnimations">100+</div>
                     <div class="stat-label">انیمیشن</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">6</div>
+                    <div class="stat-number">9</div>
                     <div class="stat-label">دسته‌بندی</div>
                 </div>
                 <div class="stat">
@@ -460,24 +565,40 @@
                 </div>
             </div>
 
+            <div class="main-controls">
+                <button class="control-btn play-all" onclick="playAllAnimations()">
+                    <i class="fas fa-play-circle"></i>
+                    <span>اجرای همه</span>
+                </button>
+                <button class="control-btn pause-all" onclick="pauseAllAnimations()">
+                    <i class="fas fa-pause-circle"></i>
+                    <span>توقف همه</span>
+                </button>
+                <button class="control-btn reset-all" onclick="resetAllAnimations()">
+                    <i class="fas fa-redo"></i>
+                    <span>ریست همه</span>
+                </button>
+            </div>
+
             <div class="tags">
                 <span class="tag">CSS3</span>
                 <span class="tag">Animations</span>
                 <span class="tag">Keyframes</span>
-                <span class="tag">Transforms</span>
-                <span class="tag">85+ Effects</span>
+                <span class="tag">Fade Effects</span>
+                <span class="tag">Bounce Effects</span>
+                <span class="tag">Zoom Effects</span>
+                <span class="tag">100+ Effects</span>
                 <span class="tag">رایگان</span>
             </div>
         </header>
 
         <div class="animation-grid" id="animations-grid">
-            <!-- 85+ انیمیشن در اینجا اضافه می‌شوند -->
-            <!-- محتوا توسط JavaScript اضافه می‌شود -->
+            <!-- 100+ انیمیشن در اینجا توسط JavaScript اضافه می‌شوند -->
         </div>
 
         <footer>
             <h3 style="margin-bottom: 15px; font-size: 1.5rem;">کتابخانه کامل CSS Animations - نسخه جامع</h3>
-            <p>مجموعه‌ای از ۸۵+ انیمیشن CSS با کدهای کامل و آماده استفاده در پروژه‌های شما</p>
+            <p>مجموعه‌ای از ۱۰۰+ انیمیشن CSS با کدهای کامل و آماده استفاده در پروژه‌های شما</p>
             <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
                 طراحی شده با <i class="fas fa-heart" style="color: #ff6b6b; animation: heartbeat 1.5s infinite;"></i> برای توسعه‌دهندگان
             </p>
@@ -485,16 +606,49 @@
     </div>
 
     <script>
-        // لیست کامل 85+ انیمیشن
+        // لیست کامل 100+ انیمیشن
         const animations = [
-            // گروه 1: انیمیشن‌های ورود (15 مورد)
+            // ============ گروه 1: Fade Effects (15 مورد) ============
             {
                 id: "fadeIn",
                 name: "Fade In",
                 description: "ظهور تدریجی",
                 icon: "fas fa-eye",
-                category: "entrance",
+                category: "fade",
                 code: `@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}`
+            },
+            {
+                id: "fadeOut",
+                name: "Fade Out",
+                description: "محو شدن تدریجی",
+                icon: "fas fa-eye-slash",
+                category: "fade",
+                code: `@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}`
+            },
+            {
+                id: "fadeInUp",
+                name: "Fade In Up",
+                description: "ظهور از پایین",
+                icon: "fas fa-arrow-up",
+                category: "fade",
+                code: `@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -506,11 +660,217 @@
 }`
             },
             {
+                id: "fadeOutUp",
+                name: "Fade Out Up",
+                description: "محو شدن به بالا",
+                icon: "fas fa-arrow-up",
+                category: "fade",
+                code: `@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}`
+            },
+            {
+                id: "fadeInDown",
+                name: "Fade In Down",
+                description: "ظهور از بالا",
+                icon: "fas fa-arrow-down",
+                category: "fade",
+                code: `@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}`
+            },
+            {
+                id: "fadeOutDown",
+                name: "Fade Out Down",
+                description: "محو شدن به پایین",
+                icon: "fas fa-arrow-down",
+                category: "fade",
+                code: `@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}`
+            },
+            {
+                id: "fadeInLeft",
+                name: "Fade In Left",
+                description: "ظهور از چپ",
+                icon: "fas fa-arrow-left",
+                category: "fade",
+                code: `@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}`
+            },
+            {
+                id: "fadeOutLeft",
+                name: "Fade Out Left",
+                description: "محو شدن به چپ",
+                icon: "fas fa-arrow-left",
+                category: "fade",
+                code: `@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}`
+            },
+            {
+                id: "fadeInRight",
+                name: "Fade In Right",
+                description: "ظهور از راست",
+                icon: "fas fa-arrow-right",
+                category: "fade",
+                code: `@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}`
+            },
+            {
+                id: "fadeOutRight",
+                name: "Fade Out Right",
+                description: "محو شدن به راست",
+                icon: "fas fa-arrow-right",
+                category: "fade",
+                code: `@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+}`
+            },
+            {
+                id: "fadeInScale",
+                name: "Fade In Scale",
+                description: "ظهور با بزرگ‌شدن",
+                icon: "fas fa-expand",
+                category: "fade",
+                code: `@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}`
+            },
+            {
+                id: "fadeOutScale",
+                name: "Fade Out Scale",
+                description: "محو شدن با کوچک‌شدن",
+                icon: "fas fa-compress",
+                category: "fade",
+                code: `@keyframes fadeOutScale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}`
+            },
+            {
+                id: "fadeInRotate",
+                name: "Fade In Rotate",
+                description: "ظهور با چرخش",
+                icon: "fas fa-redo",
+                category: "fade",
+                code: `@keyframes fadeInRotate {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}`
+            },
+            {
+                id: "fadeOutRotate",
+                name: "Fade Out Rotate",
+                description: "محو شدن با چرخش",
+                icon: "fas fa-redo",
+                category: "fade",
+                code: `@keyframes fadeOutRotate {
+  from {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(180deg) scale(0.5);
+  }
+}`
+            },
+            {
+                id: "fadeInDiagonal",
+                name: "Fade In Diagonal",
+                description: "ظهور مورب",
+                icon: "fas fa-arrows-alt-h",
+                category: "fade",
+                code: `@keyframes fadeInDiagonal {
+  from {
+    opacity: 0;
+    transform: translate(-50px, -50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}`,
+            },
+
+            // ============ گروه 2: Zoom Effects (15 مورد) ============
+            {
                 id: "zoomIn",
                 name: "Zoom In",
                 description: "بزرگ شدن از مرکز",
                 icon: "fas fa-search-plus",
-                category: "entrance",
+                category: "zoom",
                 code: `@keyframes zoomIn {
   0% {
     opacity: 0;
@@ -530,11 +890,280 @@
 }`
             },
             {
+                id: "zoomOut",
+                name: "Zoom Out",
+                description: "کوچک شدن به مرکز",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}`
+            },
+            {
+                id: "zoomInUp",
+                name: "Zoom In Up",
+                description: "بزرگ شدن از پایین",
+                icon: "fas fa-search-plus",
+                category: "zoom",
+                code: `@keyframes zoomInUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateY(100px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.475) translateY(-60px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}`
+            },
+            {
+                id: "zoomOutUp",
+                name: "Zoom Out Up",
+                description: "کوچک شدن به بالا",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOutUp {
+  40% {
+    opacity: 1;
+    transform: scale(0.475) translateY(60px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateY(-100px);
+  }
+}`
+            },
+            {
+                id: "zoomInDown",
+                name: "Zoom In Down",
+                description: "بزرگ شدن از بالا",
+                icon: "fas fa-search-plus",
+                category: "zoom",
+                code: `@keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateY(-100px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.475) translateY(60px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}`
+            },
+            {
+                id: "zoomOutDown",
+                name: "Zoom Out Down",
+                description: "کوچک شدن به پایین",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOutDown {
+  40% {
+    opacity: 1;
+    transform: scale(0.475) translateY(-60px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateY(100px);
+  }
+}`
+            },
+            {
+                id: "zoomInLeft",
+                name: "Zoom In Left",
+                description: "بزرگ شدن از چپ",
+                icon: "fas fa-search-plus",
+                category: "zoom",
+                code: `@keyframes zoomInLeft {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.475) translateX(10px);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}`
+            },
+            {
+                id: "zoomOutLeft",
+                name: "Zoom Out Left",
+                description: "کوچک شدن به چپ",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOutLeft {
+  40% {
+    opacity: 1;
+    transform: scale(0.475) translateX(42px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateX(-200px);
+  }
+}`
+            },
+            {
+                id: "zoomInRight",
+                name: "Zoom In Right",
+                description: "بزرگ شدن از راست",
+                icon: "fas fa-search-plus",
+                category: "zoom",
+                code: `@keyframes zoomInRight {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.475) translateX(-10px);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}`
+            },
+            {
+                id: "zoomOutRight",
+                name: "Zoom Out Right",
+                description: "کوچک شدن به راست",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOutRight {
+  40% {
+    opacity: 1;
+    transform: scale(0.475) translateX(-42px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateX(200px);
+  }
+}`
+            },
+            {
+                id: "zoomInRotate",
+                name: "Zoom In Rotate",
+                description: "بزرگ شدن با چرخش",
+                icon: "fas fa-expand-arrows-alt",
+                category: "zoom",
+                code: `@keyframes zoomInRotate {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}`
+            },
+            {
+                id: "zoomOutRotate",
+                name: "Zoom Out Rotate",
+                description: "کوچک شدن با چرخش",
+                icon: "fas fa-compress-arrows-alt",
+                category: "zoom",
+                code: `@keyframes zoomOutRotate {
+  0% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}`
+            },
+            {
+                id: "zoomInBounce",
+                name: "Zoom In Bounce",
+                description: "بزرگ شدن با پرش",
+                icon: "fas fa-search-plus",
+                category: "zoom",
+                code: `@keyframes zoomInBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}`
+            },
+            {
+                id: "zoomOutBounce",
+                name: "Zoom Out Bounce",
+                description: "کوچک شدن با پرش",
+                icon: "fas fa-search-minus",
+                category: "zoom",
+                code: `@keyframes zoomOutBounce {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  50%, 55% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}`
+            },
+            {
+                id: "zoomPulse",
+                name: "Zoom Pulse",
+                description: "تپش بزرگ‌شونده",
+                icon: "fas fa-expand-alt",
+                category: "zoom",
+                code: `@keyframes zoomPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}`,
+            },
+
+            // ============ گروه 3: Bounce Effects (15 مورد) ============
+            {
                 id: "bounceIn",
                 name: "Bounce In",
                 description: "ورود با پرش",
                 icon: "fas fa-basketball-ball",
-                category: "entrance",
+                category: "bounce",
                 code: `@keyframes bounceIn {
   0% {
     opacity: 0;
@@ -554,6 +1183,280 @@
 }`
             },
             {
+                id: "bounceOut",
+                name: "Bounce Out",
+                description: "خروج با پرش",
+                icon: "fas fa-basketball-ball",
+                category: "bounce",
+                code: `@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  50%, 55% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}`
+            },
+            {
+                id: "bounceInUp",
+                name: "Bounce In Up",
+                description: "پرش از پایین",
+                icon: "fas fa-arrow-up",
+                category: "bounce",
+                code: `@keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  80% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}`
+            },
+            {
+                id: "bounceOutUp",
+                name: "Bounce Out Up",
+                description: "پرش به بالا",
+                icon: "fas fa-arrow-up",
+                category: "bounce",
+                code: `@keyframes bounceOutUp {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+}`
+            },
+            {
+                id: "bounceInDown",
+                name: "Bounce In Down",
+                description: "پرش از بالا",
+                icon: "fas fa-arrow-down",
+                category: "bounce",
+                code: `@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}`
+            },
+            {
+                id: "bounceOutDown",
+                name: "Bounce Out Down",
+                description: "پرش به پایین",
+                icon: "fas fa-arrow-down",
+                category: "bounce",
+                code: `@keyframes bounceOutDown {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2000px);
+  }
+}`
+            },
+            {
+                id: "bounceInLeft",
+                name: "Bounce In Left",
+                description: "پرش از چپ",
+                icon: "fas fa-arrow-left",
+                category: "bounce",
+                code: `@keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(30px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}`
+            },
+            {
+                id: "bounceOutLeft",
+                name: "Bounce Out Left",
+                description: "پرش به چپ",
+                icon: "fas fa-arrow-left",
+                category: "bounce",
+                code: `@keyframes bounceOutLeft {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+}`
+            },
+            {
+                id: "bounceInRight",
+                name: "Bounce In Right",
+                description: "پرش از راست",
+                icon: "fas fa-arrow-right",
+                category: "bounce",
+                code: `@keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}`
+            },
+            {
+                id: "bounceOutRight",
+                name: "Bounce Out Right",
+                description: "پرش به راست",
+                icon: "fas fa-arrow-right",
+                category: "bounce",
+                code: `@keyframes bounceOutRight {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+}`
+            },
+            {
+                id: "bounce",
+                name: "Bounce",
+                description: "پرش ساده",
+                icon: "fas fa-basketball-ball",
+                category: "bounce",
+                code: `@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}`
+            },
+            {
+                id: "bounceUp",
+                name: "Bounce Up",
+                description: "پرش به بالا",
+                icon: "fas fa-arrow-up",
+                category: "bounce",
+                code: `@keyframes bounceUp {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}`
+            },
+            {
+                id: "bounceDown",
+                name: "Bounce Down",
+                description: "پرش به پایین",
+                icon: "fas fa-arrow-down",
+                category: "bounce",
+                code: `@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(25px);
+  }
+}`
+            },
+            {
+                id: "bounceLeft",
+                name: "Bounce Left",
+                description: "پرش به چپ",
+                icon: "fas fa-arrow-left",
+                category: "bounce",
+                code: `@keyframes bounceLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}`
+            },
+            {
+                id: "bounceRight",
+                name: "Bounce Right",
+                description: "پرش به راست",
+                icon: "fas fa-arrow-right",
+                category: "bounce",
+                code: `@keyframes bounceRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}`,
+            },
+
+            // ============ گروه 4: Slide Effects (10 مورد) ============
+            {
                 id: "slideInUp",
                 name: "Slide In Up",
                 description: "ورود از پایین",
@@ -567,6 +1470,23 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}`
+            },
+            {
+                id: "slideOutUp",
+                name: "Slide Out Up",
+                description: "خروج به بالا",
+                icon: "fas fa-arrow-up",
+                category: "exit",
+                code: `@keyframes slideOutUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }`
             },
@@ -588,6 +1508,23 @@
 }`
             },
             {
+                id: "slideOutDown",
+                name: "Slide Out Down",
+                description: "خروج به پایین",
+                icon: "fas fa-arrow-down",
+                category: "exit",
+                code: `@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}`
+            },
+            {
                 id: "slideInLeft",
                 name: "Slide In Left",
                 description: "ورود از چپ",
@@ -601,6 +1538,23 @@
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}`
+            },
+            {
+                id: "slideOutLeft",
+                name: "Slide Out Left",
+                description: "خروج به چپ",
+                icon: "fas fa-arrow-left",
+                category: "exit",
+                code: `@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 }`
             },
@@ -622,172 +1576,54 @@
 }`
             },
             {
-                id: "rotateIn",
-                name: "Rotate In",
-                description: "ورود با چرخش",
-                icon: "fas fa-redo",
-                category: "entrance",
-                code: `@keyframes rotateIn {
+                id: "slideOutRight",
+                name: "Slide Out Right",
+                description: "خروج به راست",
+                icon: "fas fa-arrow-right",
+                category: "exit",
+                code: `@keyframes slideOutRight {
   from {
-    transform: rotate(-180deg);
-    opacity: 0;
+    transform: translateX(0);
+    opacity: 1;
   }
   to {
-    transform: rotate(0);
-    opacity: 1;
+    transform: translateX(100%);
+    opacity: 0;
   }
 }`
             },
             {
-                id: "flipInX",
-                name: "Flip In X",
-                description: "چرخش افقی",
-                icon: "fas fa-sync-alt",
-                category: "entrance",
-                code: `@keyframes flipInX {
-  0% {
-    transform: perspective(400px) rotateX(90deg);
-    opacity: 0;
+                id: "slideUp",
+                name: "Slide Up",
+                description: "حرکت به بالا",
+                icon: "fas fa-arrow-up",
+                category: "new",
+                code: `@keyframes slideUp {
+  0%, 100% {
+    transform: translateY(0);
   }
-  40% {
-    transform: perspective(400px) rotateX(-20deg);
-  }
-  60% {
-    transform: perspective(400px) rotateX(10deg);
-    opacity: 1;
-  }
-  80% {
-    transform: perspective(400px) rotateX(-5deg);
-  }
-  100% {
-    transform: perspective(400px) rotateX(0deg);
-    opacity: 1;
+  50% {
+    transform: translateY(-20px);
   }
 }`
             },
             {
-                id: "flipInY",
-                name: "Flip In Y",
-                description: "چرخش عمودی",
-                icon: "fas fa-sync-alt",
-                category: "entrance",
-                code: `@keyframes flipInY {
-  0% {
-    transform: perspective(400px) rotateY(90deg);
-    opacity: 0;
+                id: "slideDown",
+                name: "Slide Down",
+                description: "حرکت به پایین",
+                icon: "fas fa-arrow-down",
+                category: "new",
+                code: `@keyframes slideDown {
+  0%, 100% {
+    transform: translateY(0);
   }
-  40% {
-    transform: perspective(400px) rotateY(-20deg);
-  }
-  60% {
-    transform: perspective(400px) rotateY(10deg);
-    opacity: 1;
-  }
-  80% {
-    transform: perspective(400px) rotateY(-5deg);
-  }
-  100% {
-    transform: perspective(400px) rotateY(0deg);
-    opacity: 1;
-  }
-}`
-            },
-            {
-                id: "lightSpeedIn",
-                name: "Light Speed In",
-                description: "ورود با سرعت نور",
-                icon: "fas fa-bolt",
-                category: "entrance",
-                code: `@keyframes lightSpeedIn {
-  0% {
-    transform: translateX(100%) skewX(-30deg);
-    opacity: 0;
-  }
-  60% {
-    transform: translateX(-20%) skewX(30deg);
-    opacity: 1;
-  }
-  80% {
-    transform: translateX(0%) skewX(-15deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0%) skewX(0deg);
-    opacity: 1;
-  }
-}`
-            },
-            {
-                id: "rollIn",
-                name: "Roll In",
-                description: "ورود غلتکی",
-                icon: "fas fa-dice",
-                category: "entrance",
-                code: `@keyframes rollIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-100%) rotate(-120deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px) rotate(0deg);
-  }
-}`
-            },
-            {
-                id: "zoomInRotate",
-                name: "Zoom In Rotate",
-                description: "بزرگ شدن با چرخش",
-                icon: "fas fa-expand-arrows-alt",
-                category: "entrance",
-                code: `@keyframes zoomInRotate {
-  0% {
-    transform: scale(0) rotate(-180deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(0);
-    opacity: 1;
-  }
-}`
-            },
-            {
-                id: "fadeInScale",
-                name: "Fade In Scale",
-                description: "ظهور با بزرگ‌شدن",
-                icon: "fas fa-expand",
-                category: "entrance",
-                code: `@keyframes fadeInScale {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}`
-            },
-            {
-                id: "swingIn",
-                name: "Swing In",
-                description: "ورود نوسانی",
-                icon: "fas fa-weight-hanging",
-                category: "entrance",
-                code: `@keyframes swingIn {
-  0% {
-    transform: rotateX(-100deg);
-    transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    transform: rotateX(0deg);
-    transform-origin: top;
-    opacity: 1;
+  50% {
+    transform: translateY(20px);
   }
 }`,
             },
-            // گروه 2: انیمیشن‌های جلب توجه (15 مورد)
+
+            // ============ گروه 5: Attention Effects (15 مورد) ============
             {
                 id: "pulse",
                 name: "Pulse",
@@ -971,21 +1807,6 @@
 }`
             },
             {
-                id: "bounce",
-                name: "Bounce",
-                description: "پرش",
-                icon: "fas fa-basketball-ball",
-                category: "attention",
-                code: `@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-40px);
-  }
-}`
-            },
-            {
                 id: "flash",
                 name: "Flash",
                 description: "چشمک زدن",
@@ -1068,210 +1889,70 @@
 }`
             },
             {
-                id: "bounceLeft",
-                name: "Bounce Left",
-                description: "پرش به چپ",
-                icon: "fas fa-arrow-left",
+                id: "wobbleVertical",
+                name: "Wobble Vertical",
+                description: "لرزش عمودی",
+                icon: "fas fa-arrows-alt-v",
                 category: "attention",
-                code: `@keyframes bounceLeft {
+                code: `@keyframes wobbleVertical {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-10px);
+  }
+  30% {
+    transform: translateY(8px);
+  }
+  45% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+  75% {
+    transform: translateY(-2px);
+  }
+}`
+            },
+            {
+                id: "shakeVertical",
+                name: "Shake Vertical",
+                description: "تکان عمودی",
+                icon: "fas fa-arrows-alt-v",
+                category: "attention",
+                code: `@keyframes shakeVertical {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateY(-8px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateY(8px);
+  }
+}`
+            },
+            {
+                id: "magnet",
+                name: "Magnet",
+                description: "آهنربا",
+                icon: "fas fa-magnet",
+                category: "attention",
+                code: `@keyframes magnet {
   0%, 100% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(-20px);
+  25% {
+    transform: translateX(-15px);
   }
-}`
-            },
-            {
-                id: "bounceRight",
-                name: "Bounce Right",
-                description: "پرش به راست",
-                icon: "fas fa-arrow-right",
-                category: "attention",
-                code: `@keyframes bounceRight {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(20px);
+  75% {
+    transform: translateX(15px);
   }
 }`,
             },
-            // گروه 3: انیمیشن‌های خروج (10 مورد)
-            {
-                id: "fadeOut",
-                name: "Fade Out",
-                description: "محو شدن تدریجی",
-                icon: "fas fa-eye-slash",
-                category: "exit",
-                code: `@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-}`
-            },
-            {
-                id: "zoomOut",
-                name: "Zoom Out",
-                description: "کوچک شدن به مرکز",
-                icon: "fas fa-search-minus",
-                category: "exit",
-                code: `@keyframes zoomOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-}`
-            },
-            {
-                id: "slideOutUp",
-                name: "Slide Out Up",
-                description: "خروج به بالا",
-                icon: "fas fa-arrow-up",
-                category: "exit",
-                code: `@keyframes slideOutUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "slideOutDown",
-                name: "Slide Out Down",
-                description: "خروج به پایین",
-                icon: "fas fa-arrow-down",
-                category: "exit",
-                code: `@keyframes slideOutDown {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "slideOutLeft",
-                name: "Slide Out Left",
-                description: "خروج به چپ",
-                icon: "fas fa-arrow-left",
-                category: "exit",
-                code: `@keyframes slideOutLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "slideOutRight",
-                name: "Slide Out Right",
-                description: "خروج به راست",
-                icon: "fas fa-arrow-right",
-                category: "exit",
-                code: `@keyframes slideOutRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "rotateOut",
-                name: "Rotate Out",
-                description: "خروج با چرخش",
-                icon: "fas fa-redo",
-                category: "exit",
-                code: `@keyframes rotateOut {
-  from {
-    transform: rotate(0);
-    opacity: 1;
-  }
-  to {
-    transform: rotate(180deg);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "flipOutX",
-                name: "Flip Out X",
-                description: "چرخش افقی خروج",
-                icon: "fas fa-sync-alt",
-                category: "exit",
-                code: `@keyframes flipOutX {
-  0% {
-    transform: perspective(400px) rotateX(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: perspective(400px) rotateX(90deg);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "flipOutY",
-                name: "Flip Out Y",
-                description: "چرخش عمودی خروج",
-                icon: "fas fa-sync-alt",
-                category: "exit",
-                code: `@keyframes flipOutY {
-  0% {
-    transform: perspective(400px) rotateY(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: perspective(400px) rotateY(90deg);
-    opacity: 0;
-  }
-}`
-            },
-            {
-                id: "lightSpeedOut",
-                name: "Light Speed Out",
-                description: "خروج با سرعت نور",
-                icon: "fas fa-bolt",
-                category: "exit",
-                code: `@keyframes lightSpeedOut {
-  0% {
-    transform: translateX(0%) skewX(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%) skewX(30deg);
-    opacity: 0;
-  }
-}`,
-            },
-            // گروه 4: انیمیشن‌های چرخش و فلیپ (10 مورد)
+
+            // ============ گروه 6: Rotation Effects (10 مورد) ============
             {
                 id: "spin",
                 name: "Spin",
@@ -1440,7 +2121,8 @@
   }
 }`,
             },
-            // گروه 5: انیمیشن‌های ویژه (15 مورد)
+
+            // ============ گروه 7: Special Effects (10 مورد) ============
             {
                 id: "float",
                 name: "Float",
@@ -1611,98 +2293,10 @@
     transform: scale(1.3);
     opacity: 0.8;
   }
-}`
-            },
-            {
-                id: "morph",
-                name: "Morph",
-                description: "تغییر شکل",
-                icon: "fas fa-shapes",
-                category: "special",
-                code: `@keyframes morph {
-  0%, 100% {
-    border-radius: 15px;
-  }
-  25% {
-    border-radius: 50% 15px 15px 15px;
-  }
-  50% {
-    border-radius: 15px 50% 15px 15px;
-  }
-  75% {
-    border-radius: 15px 15px 50% 15px;
-  }
-}`
-            },
-            {
-                id: "portal",
-                name: "Portal",
-                description: "پورتال",
-                icon: "fas fa-door-open",
-                category: "special",
-                code: `@keyframes portal {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}`
-            },
-            {
-                id: "vortex",
-                name: "Vortex",
-                description: "گرداب",
-                icon: "fas fa-tornado",
-                category: "special",
-                code: `@keyframes vortex {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(0.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}`
-            },
-            {
-                id: "shimmer",
-                name: "Shimmer",
-                description: "درخشش متحرک",
-                icon: "fas fa-sparkles",
-                category: "special",
-                code: `@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}`
-            },
-            {
-                id: "hologram",
-                name: "Hologram",
-                description: "هولوگرام",
-                icon: "fas fa-atom",
-                category: "special",
-                code: `@keyframes hologram {
-  0%, 100% {
-    opacity: 0.8;
-    filter: brightness(1.2) blur(1px);
-  }
-  50% {
-    opacity: 1;
-    filter: brightness(1.5) blur(0.5px);
-  }
 }`,
             },
-            // گروه 6: انیمیشن‌های جدید (20 مورد)
+
+            // ============ گروه 8: New Effects (10 مورد) ============
             {
                 id: "fold",
                 name: "Fold",
@@ -1747,84 +2341,6 @@
   }
   50% {
     transform: rotate(30deg);
-  }
-}`
-            },
-            {
-                id: "bounceUp",
-                name: "Bounce Up",
-                description: "پرش به بالا",
-                icon: "fas fa-arrow-up",
-                category: "new",
-                code: `@keyframes bounceUp {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-25px);
-  }
-}`
-            },
-            {
-                id: "bounceDown",
-                name: "Bounce Down",
-                description: "پرش به پایین",
-                icon: "fas fa-arrow-down",
-                category: "new",
-                code: `@keyframes bounceDown {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(25px);
-  }
-}`
-            },
-            {
-                id: "slideUp",
-                name: "Slide Up",
-                description: "حرکت به بالا",
-                icon: "fas fa-arrow-up",
-                category: "new",
-                code: `@keyframes slideUp {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}`
-            },
-            {
-                id: "slideDown",
-                name: "Slide Down",
-                description: "حرکت به پایین",
-                icon: "fas fa-arrow-down",
-                category: "new",
-                code: `@keyframes slideDown {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(20px);
-  }
-}`
-            },
-            {
-                id: "magnet",
-                name: "Magnet",
-                description: "آهنربا",
-                icon: "fas fa-magnet",
-                category: "new",
-                code: `@keyframes magnet {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-15px);
-  }
-  75% {
-    transform: translateX(15px);
   }
 }`
             },
@@ -1953,106 +2469,6 @@
     transform: scale(1.3) rotate(180deg);
     filter: brightness(1.5);
   }
-}`
-            },
-            {
-                id: "elastic",
-                name: "Elastic",
-                description: "کشسان",
-                icon: "fas fa-expand-arrows-alt",
-                category: "new",
-                code: `@keyframes elastic {
-  0%, 100% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.25);
-  }
-  40% {
-    transform: scale(0.9);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  60% {
-    transform: scale(0.95);
-  }
-  70% {
-    transform: scale(1.05);
-  }
-}`
-            },
-            {
-                id: "focus",
-                name: "Focus",
-                description: "فوکوس",
-                icon: "fas fa-search",
-                category: "new",
-                code: `@keyframes focus {
-  0%, 100% {
-    transform: scale(1);
-    filter: blur(0px);
-  }
-  50% {
-    transform: scale(1.1);
-    filter: blur(2px);
-  }
-}`
-            },
-            {
-                id: "sparkle",
-                name: "Sparkle",
-                description: "درخشش الماس",
-                icon: "fas fa-gem",
-                category: "new",
-                code: `@keyframes sparkle {
-  0%, 100% {
-    opacity: 1;
-    filter: brightness(1);
-  }
-  50% {
-    opacity: 0.7;
-    filter: brightness(1.5);
-  }
-}`
-            },
-            {
-                id: "drift",
-                name: "Drift",
-                description: "سر خوردن",
-                icon: "fas fa-water",
-                category: "new",
-                code: `@keyframes drift {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(10px, -10px) rotate(5deg);
-  }
-  50% {
-    transform: translate(0, -20px) rotate(0deg);
-  }
-  75% {
-    transform: translate(-10px, -10px) rotate(-5deg);
-  }
-}`
-            },
-            {
-                id: "hammer",
-                name: "Hammer",
-                description: "چکش",
-                icon: "fas fa-hammer",
-                category: "new",
-                code: `@keyframes hammer {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-30deg);
-  }
-  75% {
-    transform: rotate(30deg);
-  }
 }`,
             }
         ];
@@ -2062,7 +2478,7 @@
             const categoryClass = `demo-${animation.category}`;
             
             return `
-                <div class="animation-card" style="animation-delay: ${index * 0.05}s;">
+                <div class="animation-card" style="animation-delay: ${index * 0.03}s;">
                     <div class="card-header">
                         <div>
                             <h3><i class="${animation.icon}"></i> ${animation.name}</h3>
@@ -2074,13 +2490,13 @@
                             <i class="${animation.icon}"></i>
                         </div>
                         <div class="controls">
-                            <button onclick="playAnimation('${animation.id}-demo', '${animation.id}', '2s infinite')">
+                            <button class="action-btn play-btn" onclick="playAnimation('${animation.id}-demo', '${animation.id}', '2s infinite')">
                                 <i class="fas fa-play"></i> <span>اجرا</span>
                             </button>
-                            <button onclick="toggleAnimation('${animation.id}-demo')">
+                            <button class="action-btn pause-btn" onclick="toggleAnimation('${animation.id}-demo')">
                                 <i class="fas fa-pause"></i> <span>توقف</span>
                             </button>
-                            <button class="copy-btn" onclick="copyAnimationCode('${animation.id}')">
+                            <button class="action-btn copy-btn" onclick="copyAnimationCode('${animation.id}')">
                                 <i class="fas fa-copy"></i> <span>کپی کد</span>
                             </button>
                         </div>
@@ -2137,8 +2553,10 @@
             
             if (isPaused) {
                 element.style.animationPlayState = 'running';
+                showNotification('انیمیشن ادامه یافت');
             } else {
                 element.style.animationPlayState = 'paused';
+                showNotification('انیمیشن متوقف شد');
             }
         }
 
@@ -2147,27 +2565,29 @@
             const animation = animations.find(anim => anim.id === animationId);
             if (!animation) return;
             
-            // پیدا کردن دکمه کلیک شده
-            const buttons = document.querySelectorAll('.copy-btn');
-            const clickedButton = Array.from(buttons).find(btn => 
-                btn.getAttribute('onclick') === `copyAnimationCode('${animationId}')`
-            );
-            
-            if (!clickedButton) return;
-            
             // کپی به کلیپ‌برد
             navigator.clipboard.writeText(animation.code).then(() => {
-                // نمایش پیام موفقیت
-                const originalHTML = clickedButton.innerHTML;
-                clickedButton.innerHTML = '<i class="fas fa-check"></i> <span>کپی شد!</span>';
-                clickedButton.style.background = '#06d6a0';
+                showNotification(`کد ${animation.name} کپی شد`);
                 
-                setTimeout(() => {
-                    clickedButton.innerHTML = originalHTML;
-                    clickedButton.style.background = '';
-                }, 1500);
+                // پیدا کردن دکمه کلیک شده
+                const buttons = document.querySelectorAll('.copy-btn');
+                const clickedButton = Array.from(buttons).find(btn => 
+                    btn.getAttribute('onclick') === `copyAnimationCode('${animationId}')`
+                );
+                
+                if (clickedButton) {
+                    const originalHTML = clickedButton.innerHTML;
+                    clickedButton.innerHTML = '<i class="fas fa-check"></i> <span>کپی شد!</span>';
+                    clickedButton.style.background = '#06d6a0';
+                    
+                    setTimeout(() => {
+                        clickedButton.innerHTML = originalHTML;
+                        clickedButton.style.background = '';
+                    }, 1500);
+                }
             }).catch(err => {
                 console.error('خطا در کپی کردن:', err);
+                showNotification('خطا در کپی کردن کد', 'error');
             });
         }
 
@@ -2180,7 +2600,7 @@
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, index * 50);
+                }, index * 30);
             });
         }
 
@@ -2197,31 +2617,35 @@
             document.head.appendChild(styleSheet);
         }
 
-        // اجرای خودکار برخی انیمیشن‌ها پس از بارگذاری صفحه
-        window.addEventListener('load', function() {
-            populateAnimationsGrid();
+        // تابع برای نمایش نوتیفیکیشن
+        function showNotification(message, type = 'success') {
+            // حذف نوتیفیکیشن قبلی
+            const oldNotification = document.querySelector('.notification');
+            if (oldNotification) oldNotification.remove();
             
-            // اجرای چند انیمیشن نمونه
+            // ایجاد نوتیفیکیشن جدید
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.background = type === 'error' ? 'var(--accent)' : 'var(--success)';
+            
+            const icon = type === 'error' ? 'fas fa-times-circle' : 'fas fa-check-circle';
+            notification.innerHTML = `<i class="${icon}"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // نمایش نوتیفیکیشن
             setTimeout(() => {
-                playAnimation('fadeIn-demo', 'fadeIn', '2s infinite');
-            }, 500);
-
+                notification.classList.add('show');
+            }, 10);
+            
+            // حذف نوتیفیکیشن بعد از 3 ثانیه
             setTimeout(() => {
-                playAnimation('pulse-demo', 'pulse', '2s infinite');
-            }, 700);
-
-            setTimeout(() => {
-                playAnimation('spin-demo', 'spin', '3s linear infinite');
-            }, 900);
-
-            setTimeout(() => {
-                playAnimation('float-demo', 'float', '3s ease-in-out infinite');
-            }, 1100);
-
-            setTimeout(() => {
-                playAnimation('neon-demo', 'neon', '1.5s infinite alternate');
-            }, 1300);
-        });
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
 
         // تابع برای پخش تمام انیمیشن‌ها
         function playAllAnimations() {
@@ -2230,6 +2654,7 @@
                     playAnimation(`${animation.id}-demo`, animation.id, '2s infinite');
                 }, index * 50);
             });
+            showNotification('تمامی انیمیشن‌ها اجرا شدند');
         }
 
         // تابع برای توقف تمام انیمیشن‌ها
@@ -2240,7 +2665,75 @@
                     element.style.animationPlayState = 'paused';
                 }
             });
+            showNotification('تمامی انیمیشن‌ها متوقف شدند', 'warning');
         }
+
+        // تابع برای ریست تمام انیمیشن‌ها
+        function resetAllAnimations() {
+            animations.forEach(animation => {
+                const element = document.getElementById(`${animation.id}-demo`);
+                if (element) {
+                    element.style.animation = 'none';
+                    element.style.opacity = '1';
+                    element.style.transform = 'scale(1) rotate(0deg)';
+                    element.offsetHeight;
+                }
+            });
+            showNotification('تمامی انیمیشن‌ها ریست شدند', 'info');
+        }
+
+        // اجرای خودکار پس از بارگذاری صفحه
+        window.addEventListener('load', function() {
+            populateAnimationsGrid();
+            
+            // اجرای چند انیمیشن نمونه
+            setTimeout(() => {
+                playAnimation('fadeIn-demo', 'fadeIn', '2s infinite');
+            }, 500);
+
+            setTimeout(() => {
+                playAnimation('fadeOut-demo', 'fadeOut', '2s infinite');
+            }, 700);
+
+            setTimeout(() => {
+                playAnimation('zoomIn-demo', 'zoomIn', '2s infinite');
+            }, 900);
+
+            setTimeout(() => {
+                playAnimation('zoomOut-demo', 'zoomOut', '2s infinite');
+            }, 1100);
+
+            setTimeout(() => {
+                playAnimation('bounceIn-demo', 'bounceIn', '2s infinite');
+            }, 1300);
+
+            setTimeout(() => {
+                playAnimation('bounceOut-demo', 'bounceOut', '2s infinite');
+            }, 1500);
+        });
+
+        // اضافه کردن keyframe قلب برای فوتر
+        const heartbeatStyle = document.createElement('style');
+        heartbeatStyle.innerHTML = `
+            @keyframes heartbeat {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                14% {
+                    transform: scale(1.3);
+                }
+                28% {
+                    transform: scale(1);
+                }
+                42% {
+                    transform: scale(1.3);
+                }
+                70% {
+                    transform: scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(heartbeatStyle);
     </script>
 </body>
 </html>
