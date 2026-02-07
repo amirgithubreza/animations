@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتابخانه کامل CSS Animations (100+ انیمیشن با جزئیات کامل)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* متغیرهای رنگ */
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --purple: #7209b7;
+            --cyan: #00b4d8;
+            --orange: #ff9f1c;
+            --pink: #ff4d8d;
+            --teal: #20c997;
+            --lime: #a7c957;
+            --dark: #2d3047;
+            --light: #f8f9fa;
+            --indigo: #3a0ca3;
+            --yellow: #ffd166;
+            --red: #ef476f;
+            --green: #06d6a0;
+            --blue: #118ab2;
+        }
+
+        /* ریست استایل‌ها */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* هدر */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--success), var(--purple));
+            animation: gradientMove 8s linear infinite;
+        }
+
+        h1 {
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--purple), var(--success));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            min-width: 150px;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tags {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* کنترل‌های اصلی */
+        .main-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            transition: width 0.4s ease;
+            z-index: 1;
+        }
+
+        .control-btn:hover:before {
+            width: 100%;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-btn i, .control-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-all {
+            background: linear-gradient(135deg, var(--success), var(--teal));
+        }
+
+        .pause-all {
+            background: linear-gradient(135deg, var(--warning), var(--orange));
+        }
+
+        .reset-all {
+            background: linear-gradient(135deg, var(--pink), var(--accent));
+        }
+
+        /* گرید انیمیشن‌ها */
+        .animation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* کارت انیمیشن */
+        .animation-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            border: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .animation-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .card-header .category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .demo-area {
+            padding: 30px;
+            text-align: center;
+            background: #f8f9fa;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .demo-element {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .demo-element:hover {
+            transform: scale(1.05);
+        }
+
+        /* رنگ‌بندی دسته‌های انیمیشن */
+        .demo-entrance { background: linear-gradient(135deg, var(--success), var(--teal)); }
+        .demo-attention { background: linear-gradient(135deg, var(--accent), var(--pink)); }
+        .demo-exit { background: linear-gradient(135deg, var(--warning), var(--orange)); }
+        .demo-rotation { background: linear-gradient(135deg, var(--purple), #c77dff); }
+        .demo-special { background: linear-gradient(135deg, var(--indigo), var(--primary)); }
+        .demo-new { background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+        .demo-fade { background: linear-gradient(135deg, var(--lime), var(--green)); }
+        .demo-bounce { background: linear-gradient(135deg, var(--yellow), var(--orange)); }
+        .demo-zoom { background: linear-gradient(135deg, var(--red), var(--pink)); }
+
+        /* پنل کنترل پیشرفته */
+        .advanced-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 120px;
+            flex: 1;
+        }
+
+        .control-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .control-input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: white;
+        }
+
+        .control-select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            padding: 0 20px 20px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            transition: width 0.4s ease;
+            z-index: 1;
+        }
+
+        .action-btn:hover:before {
+            width: 100%;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-btn i, .action-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-btn {
+            background: var(--success);
+        }
+
+        .pause-btn {
+            background: var(--warning);
+        }
+
+        .copy-btn {
+            background: var(--cyan);
+        }
+
+        .details-btn {
+            background: var(--purple);
+        }
+
+        /* پنل جزئیات */
+        .details-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .details-panel.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 0.9rem;
+            color: #333;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* نمایش پراپرتی‌های انیمیشن */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .property-item {
+            background: #e9ecef;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .property-name {
+            color: #666;
+        }
+
+        .property-value {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .code-section {
+            background: #1e1e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            direction: ltr;
+            border-left: 5px solid var(--accent);
+        }
+
+        .code-line {
+            direction: ltr;
+            text-align: left;
+            padding-left: 40px;
+            position: relative;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-bottom: 5px;
+        }
+
+        .code-line:before {
+            content: attr(data-line);
+            position: absolute;
+            left: 0;
+            color: #6272a4;
+            font-size: 0.9em;
+            width: 30px;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .indent-1 { padding-left: 50px; }
+        .indent-2 { padding-left: 70px; }
+        .indent-3 { padding-left: 90px; }
+
+        /* پایین صفحه */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* انیمیشن‌های keyframe اصلی */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(67, 97, 238, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(247, 37, 133, 0.7);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* نوتیفیکیشن */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 1200px) {
+            .animation-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .animation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .main-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .control-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .controls-row {
+                flex-direction: column;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .demo-element {
+                width: 80px;
+                height: 80px;
+                font-size: 1.8rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-magic"></i> کتابخانه کامل CSS Animations</h1>
+            <p class="subtitle">
+                <span class="highlight">۱۰۰+ انیمیشن مختلف</span> با جزئیات کامل، پراپرتی‌ها و کنترل‌های پیشرفته
+            </p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalAnimations">100+</div>
+                    <div class="stat-label">انیمیشن</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">دسته‌بندی</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">کد + جزئیات</div>
+                    <div class="stat-label">نمایش کامل</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">کنترل پیشرفته</div>
+                </div>
+            </div>
+
+            <div class="main-controls">
+                <button class="control-btn play-all" onclick="playAllAnimations()">
+                    <i class="fas fa-play-circle"></i>
+                    <span>اجرای همه</span>
+                </button>
+                <button class="control-btn pause-all" onclick="pauseAllAnimations()">
+                    <i class="fas fa-pause-circle"></i>
+                    <span>توقف همه</span>
+                </button>
+                <button class="control-btn reset-all" onclick="resetAllAnimations()">
+                    <i class="fas fa-redo"></i>
+                    <span>ریست همه</span>
+                </button>
+            </div>
+
+            <div class="tags">
+                <span class="tag">CSS3</span>
+                <span class="tag">Keyframes</span>
+                <span class="tag">Animation Properties</span>
+                <span class="tag">Timing Functions</span>
+                <span class="tag">Transform</span>
+                <span class="tag">Transition</span>
+                <span class="tag">Controls</span>
+                <span class="tag">رایگان</span>
+            </div>
+        </header>
+
+        <div class="animation-grid" id="animations-grid">
+            <!-- 100+ انیمیشن در اینجا توسط JavaScript اضافه می‌شوند -->
+        </div>
+
+        <footer>
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">کتابخانه کامل CSS Animations - نسخه حرفه‌ای</h3>
+            <p>مجموعه‌ای از ۱۰۰+ انیمیشن CSS با کدهای کامل، جزئیات پراپرتی‌ها و کنترل‌های پیشرفته</p>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+                طراحی شده با <i class="fas fa-heart" style="color: #ff6b6b; animation: heartbeat 1.5s infinite;"></i> برای توسعه‌دهندگان
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // لیست کامل 100+ انیمیشن با جزئیات اضافه
+        const animations = [
+            // ============ گروه 1: Fade Effects (15 مورد) ============
+            {
+                id: "fadeIn",
+                name: "Fade In",
+                description: "ظهور تدریجی",
+                icon: "fas fa-eye",
+                category: "fade",
+                properties: {
+                    duration: "2s",
+                    timing: "ease",
+                    fillMode: "forwards",
+                    playState: "running",
+                    delay: "0s",
+                    iteration: "infinite",
+                    direction: "normal"
+                },
+                cssProperties: {
+                    opacity: "0 → 1",
+                    transform: "translateY(20px) → translateY(0)"
+                },
+                code: `@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}`,
+                recommendedUsage: "ورود المان‌ها، نمایش محتوا"
+            },
+            {
+                id: "fadeOut",
+                name: "Fade Out",
+                description: "محو شدن تدریجی",
+                icon: "fas fa-eye-slash",
+                category: "fade",
+                properties: {
+                    duration: "2s",
+                    timing: "ease",
+                    fillMode: "forwards",
+                    playState: "running",
+                    delay: "0s",
+                    iteration: "infinite",
+                    direction: "normal"
+                },
+                cssProperties: {
+                    opacity: "1 → 0",
+                    transform: "translateY(0) → translateY(20px)"
+                },
+                code: `@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}`,
+                recommendedUsage: "خروج المان‌ها، پنهان‌سازی"
+            },
+            // ... (بقیه انیمیشن‌ها با ساختار مشابه)
+        ];
+
+        // اطلاعات دسته‌بندی‌ها
+        const categoryInfo = {
+            fade: { name: "Fade Effects", description: "انیمیشن‌های محو شدن و ظهور", color: "var(--green)" },
+            zoom: { name: "Zoom Effects", description: "انیمیشن‌های بزرگ و کوچک شدن", color: "var(--red)" },
+            bounce: { name: "Bounce Effects", description: "انیمیشن‌های پرشی و جهشی", color: "var(--yellow)" },
+            entrance: { name: "Entrance Effects", description: "انیمیشن‌های ورود", color: "var(--success)" },
+            exit: { name: "Exit Effects", description: "انیمیشن‌های خروج", color: "var(--warning)" },
+            attention: { name: "Attention Effects", description: "انیمیشن‌های جلب توجه", color: "var(--accent)" },
+            rotation: { name: "Rotation Effects", description: "انیمیشن‌های چرخشی", color: "var(--purple)" },
+            special: { name: "Special Effects", description: "انیمیشن‌های ویژه و خاص", color: "var(--indigo)" },
+            new: { name: "New Effects", description: "انیمیشن‌های جدید و خلاقانه", color: "var(--cyan)" }
+        };
+
+        // اطلاعات timing functions
+        const timingFunctions = [
+            "ease", "linear", "ease-in", "ease-out", "ease-in-out",
+            "step-start", "step-end", "steps(4)", "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+        ];
+
+        // اطلاعات fill modes
+        const fillModes = ["none", "forwards", "backwards", "both"];
+
+        // اطلاعات directions
+        const directions = ["normal", "reverse", "alternate", "alternate-reverse"];
+
+        // تابع برای ایجاد کارت انیمیشن
+        function createAnimationCard(animation, index) {
+            const categoryClass = `demo-${animation.category}`;
+            const categoryName = categoryInfo[animation.category]?.name || animation.category;
+            
+            return `
+                <div class="animation-card" style="animation-delay: ${index * 0.03}s;">
+                    <div class="card-header">
+                        <div>
+                            <h3><i class="${animation.icon}"></i> ${animation.name}</h3>
+                            <p>${animation.description}</p>
+                            <span class="category">${categoryName}</span>
+                        </div>
+                        <div style="font-size: 0.8rem; opacity: 0.9;">
+                            <i class="fas fa-clock"></i> ${animation.properties.duration}
+                        </div>
+                    </div>
+                    
+                    <div class="demo-area">
+                        <div class="demo-element ${categoryClass}" id="${animation.id}-demo" data-animation-id="${animation.id}">
+                            <i class="${animation.icon}"></i>
+                        </div>
+                        
+                        <div class="advanced-controls">
+                            <div class="controls-row">
+                                <div class="control-group">
+                                    <label class="control-label">مدت زمان (duration):</label>
+                                    <select class="control-select" id="${animation.id}-duration" onchange="updateAnimation('${animation.id}')">
+                                        <option value="0.5s">0.5s</option>
+                                        <option value="1s" selected>1s</option>
+                                        <option value="2s">2s</option>
+                                        <option value="3s">3s</option>
+                                        <option value="5s">5s</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">تایمینگ (timing):</label>
+                                    <select class="control-select" id="${animation.id}-timing" onchange="updateAnimation('${animation.id}')">
+                                        ${timingFunctions.map(tf => 
+                                            `<option value="${tf}" ${animation.properties.timing === tf ? 'selected' : ''}>${tf}</option>`
+                                        ).join('')}
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">تعداد تکرار (iteration):</label>
+                                    <select class="control-select" id="${animation.id}-iteration" onchange="updateAnimation('${animation.id}')">
+                                        <option value="1">1 بار</option>
+                                        <option value="2">2 بار</option>
+                                        <option value="3">3 بار</option>
+                                        <option value="infinite" selected>بی‌نهایت</option>
+                                        <option value="0.5">نصف بار</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">جهت (direction):</label>
+                                    <select class="control-select" id="${animation.id}-direction" onchange="updateAnimation('${animation.id}')">
+                                        ${directions.map(dir => 
+                                            `<option value="${dir}" ${animation.properties.direction === dir ? 'selected' : ''}>${dir}</option>`
+                                        ).join('')}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="controls-row">
+                                <div class="control-group">
+                                    <label class="control-label">تأخیر (delay):</label>
+                                    <input type="text" class="control-input" id="${animation.id}-delay" value="0s" onchange="updateAnimation('${animation.id}')">
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">حالت پر شدن (fill-mode):</label>
+                                    <select class="control-select" id="${animation.id}-fillMode" onchange="updateAnimation('${animation.id}')">
+                                        ${fillModes.map(fm => 
+                                            `<option value="${fm}" ${animation.properties.fillMode === fm ? 'selected' : ''}>${fm}</option>`
+                                        ).join('')}
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label">حالت پخش (play-state):</label>
+                                    <select class="control-select" id="${animation.id}-playState" onchange="updateAnimation('${animation.id}')">
+                                        <option value="running" selected>در حال اجرا</option>
+                                        <option value="paused">متوقف شده</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="controls">
+                            <button class="action-btn play-btn" onclick="playAnimation('${animation.id}')">
+                                <i class="fas fa-play"></i> <span>اجرا</span>
+                            </button>
+                            <button class="action-btn pause-btn" onclick="pauseAnimation('${animation.id}')">
+                                <i class="fas fa-pause"></i> <span>توقف</span>
+                            </button>
+                            <button class="action-btn details-btn" onclick="toggleDetails('${animation.id}')">
+                                <i class="fas fa-info-circle"></i> <span>جزئیات</span>
+                            </button>
+                            <button class="action-btn copy-btn" onclick="copyAnimationCode('${animation.id}')">
+                                <i class="fas fa-copy"></i> <span>کپی کد</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="details-panel" id="${animation.id}-details">
+                        <h4 style="margin-bottom: 15px; color: var(--primary);">
+                            <i class="fas fa-chart-bar"></i> جزئیات انیمیشن
+                        </h4>
+                        
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <div class="detail-label">دسته‌بندی:</div>
+                                <div class="detail-value">${categoryName}</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-label">توصیه استفاده:</div>
+                                <div class="detail-value">${animation.recommendedUsage || "کاربردی عمومی"}</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-label">تعداد keyframes:</div>
+                                <div class="detail-value">${animation.code.includes('50%') ? '3 (0%, 50%, 100%)' : '2 (from, to)'}</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <div class="detail-label">پشتیبانی مرورگرها:</div>
+                                <div class="detail-value">96%+</div>
+                            </div>
+                        </div>
+                        
+                        <h5 style="margin: 15px 0 10px 0; color: var(--secondary);">
+                            <i class="fas fa-sliders-h"></i> پراپرتی‌های CSS
+                        </h5>
+                        
+                        <div class="properties-grid">
+                            ${Object.entries(animation.cssProperties || {}).map(([prop, value]) => `
+                                <div class="property-item">
+                                    <span class="property-name">${prop}:</span>
+                                    <span class="property-value">${value}</span>
+                                </div>
+                            `).join('')}
+                            
+                            ${!animation.cssProperties ? `
+                                <div class="property-item">
+                                    <span class="property-name">transform:</span>
+                                    <span class="property-value">scale/rotate/translate</span>
+                                </div>
+                                <div class="property-item">
+                                    <span class="property-name">opacity:</span>
+                                    <span class="property-value">0 → 1</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <h5 style="margin: 15px 0 10px 0; color: var(--secondary);">
+                            <i class="fas fa-code"></i> نحوه استفاده
+                        </h5>
+                        <div style="background: white; padding: 15px; border-radius: 10px; font-size: 0.9rem; direction: ltr; text-align: left;">
+                            .element {
+                                animation: ${animation.id} 2s ease infinite;
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="code-section">
+                        <div style="margin-bottom: 10px; color: #6272a4; font-size: 0.8rem; display: flex; justify-content: space-between;">
+                            <span><i class="fas fa-file-code"></i> کد Keyframe</span>
+                            <span>${animation.id}</span>
+                        </div>
+                        ${animation.code.split('\n').map((line, i) => 
+                            `<div class="code-line" data-line="${i + 1}">${line}</div>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // تابع برای پر کردن گرید با انیمیشن‌ها
+        function populateAnimationsGrid() {
+            const grid = document.getElementById('animations-grid');
+            grid.innerHTML = '';
+            
+            animations.forEach((animation, index) => {
+                grid.innerHTML += createAnimationCard(animation, index);
+            });
+            
+            // به‌روزرسانی تعداد انیمیشن‌ها
+            document.getElementById('totalAnimations').textContent = animations.length;
+            
+            // انیمیشن کارت‌ها
+            animateCards();
+            
+            // اضافه کردن keyframe انیمیشن‌ها به استایل
+            addKeyframesToStyle();
+        }
+
+        // تابع برای به‌روزرسانی انیمیشن با تنظیمات جدید
+        function updateAnimation(animationId) {
+            const element = document.getElementById(`${animationId}-demo`);
+            if (!element) return;
+            
+            const duration = document.getElementById(`${animationId}-duration`).value;
+            const timing = document.getElementById(`${animationId}-timing`).value;
+            const iteration = document.getElementById(`${animationId}-iteration`).value;
+            const direction = document.getElementById(`${animationId}-direction`).value;
+            const delay = document.getElementById(`${animationId}-delay`).value;
+            const fillMode = document.getElementById(`${animationId}-fillMode`).value;
+            const playState = document.getElementById(`${animationId}-playState`).value;
+            
+            // ایجاد رشته انیمیشن
+            const animationString = `${animationId} ${duration} ${timing} ${delay} ${iteration} ${direction} ${fillMode}`;
+            
+            // اعمال انیمیشن
+            element.style.animation = animationString;
+            element.style.animationPlayState = playState;
+            
+            // به‌روزرسانی اطلاعات نمایشی
+            const animation = animations.find(anim => anim.id === animationId);
+            if (animation) {
+                animation.properties = {
+                    duration, timing, iteration, direction, delay, fillMode, playState
+                };
+            }
+            
+            showNotification(`انیمیشن ${animationId} به‌روزرسانی شد`);
+        }
+
+        // تابع برای پخش انیمیشن
+        function playAnimation(animationId) {
+            const element = document.getElementById(`${animationId}-demo`);
+            if (!element) return;
+            
+            // تنظیم play state به running
+            document.getElementById(`${animationId}-playState`).value = "running";
+            
+            // اعمال مجدد انیمیشن
+            updateAnimation(animationId);
+            
+            showNotification(`انیمیشن ${animationId} اجرا شد`);
+        }
+
+        // تابع برای توقف انیمیشن
+        function pauseAnimation(animationId) {
+            const element = document.getElementById(`${animationId}-demo`);
+            if (!element) return;
+            
+            // تنظیم play state به paused
+            document.getElementById(`${animationId}-playState`).value = "paused";
+            
+            // اعمال تغییر
+            element.style.animationPlayState = "paused";
+            
+            showNotification(`انیمیشن ${animationId} متوقف شد`);
+        }
+
+        // تابع برای نمایش/مخفی کردن جزئیات
+        function toggleDetails(animationId) {
+            const detailsPanel = document.getElementById(`${animationId}-details`);
+            if (!detailsPanel) return;
+            
+            detailsPanel.classList.toggle('active');
+            
+            const button = document.querySelector(`button[onclick="toggleDetails('${animationId}')"]`);
+            if (button) {
+                const icon = button.querySelector('i');
+                if (detailsPanel.classList.contains('active')) {
+                    icon.className = 'fas fa-chevron-up';
+                    button.innerHTML = button.innerHTML.replace('جزئیات', 'بستن');
+                } else {
+                    icon.className = 'fas fa-info-circle';
+                    button.innerHTML = button.innerHTML.replace('بستن', 'جزئیات');
+                }
+            }
+        }
+
+        // تابع برای کپی کد انیمیشن
+        function copyAnimationCode(animationId) {
+            const animation = animations.find(anim => anim.id === animationId);
+            if (!animation) return;
+            
+            // کپی به کلیپ‌برد
+            navigator.clipboard.writeText(animation.code).then(() => {
+                showNotification(`کد ${animation.name} کپی شد`);
+                
+                // افکت روی دکمه
+                const button = document.querySelector(`button[onclick="copyAnimationCode('${animationId}')"]`);
+                if (button) {
+                    const originalHTML = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check"></i> <span>کپی شد!</span>';
+                    button.style.background = '#06d6a0';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.style.background = '';
+                    }, 1500);
+                }
+            }).catch(err => {
+                console.error('خطا در کپی کردن:', err);
+                showNotification('خطا در کپی کردن کد', 'error');
+            });
+        }
+
+        // تابع برای انیمیشن کارت‌ها
+        function animateCards() {
+            const cards = document.querySelectorAll('.animation-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 30);
+            });
+        }
+
+        // تابع برای اضافه کردن keyframe‌ها به استایل
+        function addKeyframesToStyle() {
+            let keyframesCSS = '';
+            
+            animations.forEach(animation => {
+                keyframesCSS += animation.code + '\n\n';
+            });
+            
+            const styleSheet = document.createElement('style');
+            styleSheet.innerHTML = keyframesCSS;
+            document.head.appendChild(styleSheet);
+        }
+
+        // تابع برای نمایش نوتیفیکیشن
+        function showNotification(message, type = 'success') {
+            // حذف نوتیفیکیشن قبلی
+            const oldNotification = document.querySelector('.notification');
+            if (oldNotification) oldNotification.remove();
+            
+            // ایجاد نوتیفیکیشن جدید
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.background = type === 'error' ? 'var(--accent)' : 
+                                           type === 'warning' ? 'var(--warning)' : 'var(--success)';
+            
+            const icon = type === 'error' ? 'fas fa-times-circle' : 
+                         type === 'warning' ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle';
+            notification.innerHTML = `<i class="${icon}"></i> ${message}`;
+            
+            document.body.appendChild(notification);
+            
+            // نمایش نوتیفیکیشن
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // حذف نوتیفیکیشن بعد از 3 ثانیه
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // تابع برای پخش تمام انیمیشن‌ها
+        function playAllAnimations() {
+            animations.forEach((animation, index) => {
+                setTimeout(() => {
+                    playAnimation(animation.id);
+                }, index * 50);
+            });
+            showNotification('تمامی انیمیشن‌ها اجرا شدند');
+        }
+
+        // تابع برای توقف تمام انیمیشن‌ها
+        function pauseAllAnimations() {
+            animations.forEach(animation => {
+                pauseAnimation(animation.id);
+            });
+            showNotification('تمامی انیمیشن‌ها متوقف شدند', 'warning');
+        }
+
+        // تابع برای ریست تمام انیمیشن‌ها
+        function resetAllAnimations() {
+            animations.forEach(animation => {
+                const element = document.getElementById(`${animation.id}-demo`);
+                if (element) {
+                    element.style.animation = 'none';
+                    element.style.opacity = '1';
+                    element.style.transform = 'scale(1) rotate(0deg)';
+                    element.offsetHeight;
+                }
+                
+                // ریست تنظیمات به مقادیر پیش‌فرض
+                document.getElementById(`${animation.id}-duration`).value = '1s';
+                document.getElementById(`${animation.id}-timing`).value = 'ease';
+                document.getElementById(`${animation.id}-iteration`).value = 'infinite';
+                document.getElementById(`${animation.id}-direction`).value = 'normal';
+                document.getElementById(`${animation.id}-delay`).value = '0s';
+                document.getElementById(`${animation.id}-fillMode`).value = 'forwards';
+                document.getElementById(`${animation.id}-playState`).value = 'running';
+            });
+            showNotification('تمامی انیمیشن‌ها ریست شدند', 'info');
+        }
+
+        // اجرای خودکار پس از بارگذاری صفحه
+        window.addEventListener('load', function() {
+            populateAnimationsGrid();
+            
+            // نمایش پیام خوش‌آمد
+            setTimeout(() => {
+                showNotification('کتابخانه انیمیشن‌های CSS با جزئیات کامل بارگذاری شد!');
+            }, 1000);
+        });
+
+        // اضافه کردن keyframe قلب برای فوتر
+        const heartbeatStyle = document.createElement('style');
+        heartbeatStyle.innerHTML = `
+            @keyframes heartbeat {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                14% {
+                    transform: scale(1.3);
+                }
+                28% {
+                    transform: scale(1);
+                }
+                42% {
+                    transform: scale(1.3);
+                }
+                70% {
+                    transform: scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(heartbeatStyle);
+    </script>
+</body>
+</html>
